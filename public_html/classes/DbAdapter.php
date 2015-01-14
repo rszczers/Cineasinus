@@ -1,8 +1,8 @@
 <?php
 class DbAdapter extends PDO {
     private $dsn = "mysql:host=;dbname=test";
-    private $username = "abraham_cineasinus";
-    private $passwd = "sprytnasarnajesledzie1";
+    private $username = "";
+    private $passwd = "";
     
     function __construct() {
         try {
