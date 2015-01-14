@@ -7,10 +7,10 @@
  */
 
 /**
- * Description of home
+ * Description of App
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-class home {
+class App {
     //put your code here
 }
