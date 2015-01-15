@@ -1,4 +1,6 @@
 <?php
 class Home extends Controller {
-    //put your code here
+    public function index() {
+        echo 'home/huj';
+    }
 }
