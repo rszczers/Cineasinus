@@ -1,21 +1,24 @@
 <?php
 class Movie implements Model {
-    private $id;
     private $name;
     private $category;
     private $duration;
     private $director;
-    private $description;    
+    private $description;   
+    private $plpremiere;
+    private $id;
+    private $fpremiere;
     
-    function __construct($id, $name, $category, $duration, $director, $description) {
-        $this->id = $id;
+    function __construct($name, $category, $duration, $director,
+            $description, $plpremiere, $id) {
         $this->name = $name;
         $this->category = $category;
         $this->duration = $duration;
         $this->director = $director;
         $this->description = $description;
+        $this->plpremiere = $plpremiere;
+        $this->id = $id;
     }
-        
     
     function getId() {
         return $this->id;
@@ -45,12 +48,21 @@ class Movie implements Model {
         $this->id = $id;
     }
     
-    function add2db() {
-        
+    function sql2db() {
+        $sql = "insert into `movies` "
+                . "(`name`, `category`, `duration`, `director`,"
+                . "`description`, `plpremiere`, `fpremiere`)"
+                . " values (" .
+                "'" . $this->name . "," .
+                "'" . $this->category . "," .
+                "'" . $this->duration . "," .
+                "'" . $this->director . "," .
+                "'" . $this->description . "," .
+                "'" . $this->plpremiere . ")";
+        return $sql;
     }
     
-    function get2db($id) {
+    function getFromDb($id) {
         
     }
-
 }

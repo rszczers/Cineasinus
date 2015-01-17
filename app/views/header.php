@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="http://<?php echo App::ABS_PATH;; ?>data/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="http://<?php echo App::ABS_PATH;; ?>data/css/main.css">
 
-        <script src="<?php echo App::ABS_PATH; ?>data/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="http://<?php echo App::ABS_PATH; ?>data/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>

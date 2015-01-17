@@ -57,11 +57,21 @@ class User implements Model {
         $this->id = $id;
     }
 
-    public function add2db() {
-        
+    public function sql2db() {
+        $sql = "insert into `users` "
+                . "(`passhash`, `email`, `rank`,"
+                . "`first`, `last`, `phone`)"                
+                . " values (" .
+                "'" . $this->passhhash . "," .                
+                "'" . $this->email . "," .
+                "'" . $this->rank . "," .                
+                "'" . $this->first . "," .                
+                "'" . $this->last . "," .                
+                "'" . $this->phone . ")";
+        return $sql;
     }
 
-    public function get2db($id) {
+    public function getFromDb($id) {
         
     }
 

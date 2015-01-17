@@ -61,11 +61,20 @@ class Repertoire implements Model {
         
     }
 
-    public function get2db($id) {
-        
+    public function sql2db() {
+        $sql = "insert into `repertoire` "
+                . "(`movieid`, `city`, `cinemaname`,"
+                . "`date`, `price`)"
+                . " values (" .
+                "'" . $this->movieid . "," .                
+                "'" . $this->city . "," .
+                "'" . $this->cinemaname . "," .
+                "'" . $this->date . "," .
+                "'" . $this->price . ")";
+        return $sql;
     }
 
-    public function get2db($id) {
+    public function getFromDb($id) {
         
     }
 
