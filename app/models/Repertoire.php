@@ -81,11 +81,12 @@ class Repertoire implements Model {
         return sql;        
     }
     public function sqlUpdate() {
-        $sql = "update `reservation`" .
-               "set userid = '" . $this->userid . "'," .
-               "code = '" . $this->code . "'," .
-               "repertid = '" . $this->repertid . "'," .
-               "checked = '" . $this->checked . "'" .
+        $sql = "update `repertoire`" .
+               "set movieid = '" . $this->movieid . "'," .
+               "city = '" . $this->city . "'," .
+               "cinemaname = '" . $this->cinemaname . "'," .
+               "date = '" . $this->date . "'," .
+               "price = '" . $this->price . "' " .
                "where 'id' = " . $this->id;
         return $sql;
     }

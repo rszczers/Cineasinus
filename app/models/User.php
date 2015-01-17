@@ -88,7 +88,7 @@ class User implements Model {
                "rank = '" . $this->rank . "'," .
                "first = '" . $this->first . "'" .
                "last = '" . $this->last . "'" .
-               "phone = '" . $this->phone . "'" .               
+               "phone = '" . $this->phone . "' " .               
                "where 'id' = " . $this->id;
         return $sql;
     }

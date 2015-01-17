@@ -61,7 +61,7 @@ class Reservation implements Model {
                "set userid = '" . $this->userid . "'," .
                "code = '" . $this->code . "'," .
                "repertid = '" . $this->repertid . "'," .
-               "checked = '" . $this->checked . "'" .
+               "checked = '" . $this->checked . "' " .
                "where 'id' = " . $this->id;
         return $sql;
     }

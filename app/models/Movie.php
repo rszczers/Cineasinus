@@ -82,7 +82,7 @@ class Movie implements Model {
                "director = '" . $this->director . "'" .
                "description = '" . $this->description . "'" .
                "plpremiere = '" . $this->plpremiere . "'" .
-               "fpremiere = '" . $this->fpremiere . "'" .
+               "fpremiere = '" . $this->fpremiere . "' " .
                "where 'id' = " . $this->id;
         return $sql;
     }
