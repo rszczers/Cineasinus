@@ -56,10 +56,6 @@ class Repertoire implements Model {
     function setPrice($price) {
         $this->price = $price;
     }
-    
-    function add2db() {
-        
-    }
 
     public function sqlAdd() {
         $sql = "insert into `repertoire` "
@@ -80,9 +76,17 @@ class Repertoire implements Model {
         return $sql;
     }
     public function sqlRm() {
-        ;
+        $sql = "delete from `repertoire` where " .
+            "'id' = " . $this->id;
+        return sql;        
     }
     public function sqlUpdate() {
-        ;
+        $sql = "update `reservation`" .
+               "set userid = '" . $this->userid . "'," .
+               "code = '" . $this->code . "'," .
+               "repertid = '" . $this->repertid . "'," .
+               "checked = '" . $this->checked . "'" .
+               "where 'id' = " . $this->id;
+        return $sql;
     }
 }

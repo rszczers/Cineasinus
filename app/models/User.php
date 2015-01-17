@@ -77,9 +77,19 @@ class User implements Model {
        return $sql;
     }
     public function sqlRm() {
-        ;
+        $sql = "delete from `users` where " .
+            "'id' = " . $this->id;
+        return sql;
     }
     public function sqlUpdate() {
-        ;
+        $sql = "update `users`" .
+               "set passhash = '" . $this->passhash . "'," .
+               "email = '" . $this->email . "'," .
+               "rank = '" . $this->rank . "'," .
+               "first = '" . $this->first . "'" .
+               "last = '" . $this->last . "'" .
+               "phone = '" . $this->phone . "'" .               
+               "where 'id' = " . $this->id;
+        return $sql;
     }
 }

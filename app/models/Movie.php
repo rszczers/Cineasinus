@@ -58,7 +58,8 @@ class Movie implements Model {
                 "'" . $this->duration . "," .
                 "'" . $this->director . "," .
                 "'" . $this->description . "," .
-                "'" . $this->plpremiere . ")";
+                "'" . $this->plpremiere . "," .
+                "'" . $this->fpremiere . ")";
         return $sql;
     }
     
@@ -68,9 +69,21 @@ class Movie implements Model {
         return $sql;        
     }
     public function sqlRm() {
-        ;
+        $sql = "delete from `movies` where " .
+            "'id' = " . $this->id;
+        return sql;
     }
+    
     public function sqlUpdate() {
-        ;
+        $sql = "update `movies`" .
+               "set name = '" . $this->name . "'," .
+               "category = '" . $this->category . "'," .
+               "duration = '" . $this->duration . "'," .
+               "director = '" . $this->director . "'" .
+               "description = '" . $this->description . "'" .
+               "plpremiere = '" . $this->plpremiere . "'" .
+               "fpremiere = '" . $this->fpremiere . "'" .
+               "where 'id' = " . $this->id;
+        return $sql;
     }
 }

@@ -52,11 +52,18 @@ class Reservation implements Model {
         return $sql;
     }
     public function sqlRm() {
-        
-        ;
+        $sql = "delete from `reservation` where " .
+            "'id' = " . $this->id;
+        return sql;
     }
     public function sqlUpdate() {
-        ;
+        $sql = "update `reservation`" .
+               "set userid = '" . $this->userid . "'," .
+               "code = '" . $this->code . "'," .
+               "repertid = '" . $this->repertid . "'," .
+               "checked = '" . $this->checked . "'" .
+               "where 'id' = " . $this->id;
+        return $sql;
     }
         
     
