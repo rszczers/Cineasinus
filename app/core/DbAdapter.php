@@ -2,7 +2,7 @@
 class DbAdapter extends PDO {
     private $dsn = "mysql:host=abraham.linuxpl.info;dbname=abraham_cineasinus";
     private $username = "abraham_cineroot";
-    private $passwd = "sprytnasarnajesledzie1";
+    private $passwd = "x";
     
     function __construct() {
         try {
