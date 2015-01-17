@@ -2,7 +2,12 @@
 /**
  * Controller superclass; mediates data between models and views
  */
-class Controller {
+class Controller {    
+    private $view;
+      
+    function __construct() {
+        
+    }
     
     //create new model object
     protected function model($model) {
