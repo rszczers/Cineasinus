@@ -36,5 +36,8 @@ class Reservation implements Model {
         
     }
 
+    public function get2db($id) {
+        
+    }
 
 }

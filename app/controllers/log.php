@@ -22,7 +22,7 @@ class Log extends Controller {
     
     public function register() {
         //here check if user already tried to register
-        $this->view('log/logout', "Rejestracja", array('argument'));
+        $this->view('log/register', "Rejestracja", array('argument'));
     }
     
     
