@@ -6,16 +6,15 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title><?php echo $title ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://<?php echo App::ABS_PATH;; ?>data/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://<?php echo App::ABS_PATH;; ?>data/css/style.css">        
+        <link rel="stylesheet" href="http://<?php echo App::ABS_PATH;; ?>data/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="http://<?php echo App::ABS_PATH;; ?>data/css/main.css">
 
-        <link rel="stylesheet" href="data/css/bootstrap.min.css">
-        <link rel="stylesheet" href="data/css/style.css">        
-        <link rel="stylesheet" href="data/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="data/css/main.css">
-
-        <script src="data/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="<?php echo App::ABS_PATH; ?>data/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -33,14 +32,14 @@
           <a class="navbar-brand" href="#">Cineasinus</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
+          <form action="log/in" class="navbar-form navbar-right" role="form" method="post">
             <div class="form-group">
               <input type="text" placeholder="Email" class="form-control">
             </div>
             <div class="form-group">
               <input type="password" placeholder="Password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
+            <button type="submit" class="btn btn-success">Zaloguj się</button>
           </form>
         </div><!--/.navbar-collapse -->
       </div>

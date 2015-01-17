@@ -1,5 +1,5 @@
 <?php
-class Repertoire {
+class Repertoire extends Model {
     private $movieid;    
     private $id;
     private $city;

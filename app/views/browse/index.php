@@ -1,3 +1,3 @@
 <?php require '../app/views/header.php' ?>
-Error page
+Browsing page
 <?php require '../app/views/footer.php' ?>

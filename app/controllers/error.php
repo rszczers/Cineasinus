@@ -2,13 +2,12 @@
 
 class Error extends Controller {
 
-    function __construct() {
-        echo "error!";        
+    public function index($depth) {
+        $this->view('error/index', $depth);
     }
     
-    public function index() {
-        $this->view('error/index', array('argument'));
+    public function failedLogin($depth) {
+        $this->view('error/failedLogin', "title", $depth);
     }
-
 }
 

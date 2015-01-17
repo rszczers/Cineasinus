@@ -1,5 +1,5 @@
 <?php
-class Reservation {
+class Reservation extends Model {
     private $id;
     private $userid;
     private $code;

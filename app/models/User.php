@@ -1,5 +1,5 @@
 <?php
-class User {
+class User extends Model {
     private $id;
     private $passhash;
     private $email;
@@ -7,10 +7,9 @@ class User {
     private $avatar;
     private $first;
     private $last;
-    private $phone;
-    private $reservationid;
+    private $phone;    
     
-    function __construct($id, $passhash, $email, $rank, $avatar, $first, $last, $phone, $reservationid) {
+    function __construct($id, $passhash, $email, $rank, $avatar, $first, $last, $phone) {
         $this->id = $id;
         $this->passhash = $passhash;
         $this->email = $email;
@@ -52,10 +51,6 @@ class User {
 
     function getPhone() {
         return $this->phone;
-    }
-
-    function getReservationid() {
-        return $this->reservationid;
     }
     
     function setId($id) {

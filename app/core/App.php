@@ -2,7 +2,9 @@
 /**
  * Application core; parses urls and sets up controllers
  */
-class App {    
+class App {
+    const ABS_PATH = "rszczers.abraham.linuxpl.info/AI/Cineasinus/public/";
+    
     //default conditions
     protected $controller = 'home';    
     protected $method = 'index';    
@@ -26,14 +28,14 @@ class App {
         if(isset($url[1])) {
             if(method_exists($this->controller, $url[1])) {
                 $this->method = $url[1];
-                unser($url[1]);
+                unset($url[1]);
             }
         }
         
         //following line ommits php warning if $url is null
-        $this->params = $url ? array_values($url) : array();
+        $this->params = $url ? array_values($url) : array();        
 
-        call_user_func_array(array($this->controller, $this->method), $this->params);
+        call_user_func_array(array($this->controller, $this->method), $this->params);        
     }
     
     //Simple url parsing

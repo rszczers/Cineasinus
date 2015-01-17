@@ -1,5 +1,5 @@
 <?php
-class Movie {
+class Movie extends Model {
     private $id;
     private $name;
     private $category;

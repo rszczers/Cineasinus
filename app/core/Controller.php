@@ -11,7 +11,7 @@ class Controller {
     }
     
     //populate selected view with specified data
-    protected function view($view, $data = array()) {
+    protected function view($view, $title, $data = array()) {
         require_once '../app/views/' . $view . '.php';       
     }
 }
