@@ -57,7 +57,7 @@ class User implements Model {
         $this->id = $id;
     }
 
-    public function sql2db() {
+    public function sqlAdd() {
         $sql = "insert into `users` "
                 . "(`passhash`, `email`, `rank`,"
                 . "`first`, `last`, `phone`)"                
@@ -71,8 +71,10 @@ class User implements Model {
         return $sql;
     }
 
-    function sqlRead($id) {
-        
+    function sqlRead() {
+       $sql = "select * from `users` where 'id' = " . 
+               $this->id;
+       return $sql;
     }
     public function sqlRm() {
         ;

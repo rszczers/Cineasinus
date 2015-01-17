@@ -61,7 +61,7 @@ class Repertoire implements Model {
         
     }
 
-    public function sql2db() {
+    public function sqlAdd() {
         $sql = "insert into `repertoire` "
                 . "(`movieid`, `city`, `cinemaname`,"
                 . "`date`, `price`)"
@@ -75,7 +75,9 @@ class Repertoire implements Model {
     }
 
     function sqlRead($id) {
-        
+        $sql = "select * from `repertoire` where 'id' = " . 
+            $this->id;
+        return $sql;
     }
     public function sqlRm() {
         ;

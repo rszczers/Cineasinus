@@ -34,7 +34,7 @@ class Reservation implements Model {
         return $this->repertid;
     }
     
-    function sql2db () {
+    function sqlAdd () {
         $sql = "insert into `reservations` "
                 . "(`userid`, `code`, `repertid`,"
                 . "`checked`)"
@@ -47,9 +47,12 @@ class Reservation implements Model {
     }
 
     function sqlRead($id) {
-        
+        $sql = "select * from `reservations` where 'id' = " . 
+               $this->id;
+        return $sql;
     }
     public function sqlRm() {
+        
         ;
     }
     public function sqlUpdate() {

@@ -63,7 +63,9 @@ class Movie implements Model {
     }
     
     function sqlRead($id) {
-        
+        $sql = "select * from `movies` where 'id' = " . 
+            $this->id;
+        return $sql;        
     }
     public function sqlRm() {
         ;
