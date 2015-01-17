@@ -1,5 +1,5 @@
 <?php
-class Reservation extends Model {
+class Reservation implements Model {
     private $id;
     private $userid;
     private $code;
@@ -30,6 +30,10 @@ class Reservation extends Model {
 
     function getRepertid() {
         return $this->repertid;
+    }
+    
+    function add2db () {
+        
     }
 
 

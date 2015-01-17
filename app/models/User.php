@@ -1,5 +1,5 @@
 <?php
-class User extends Model {
+class User implements Model {
     private $id;
     private $passhash;
     private $email;
@@ -57,5 +57,12 @@ class User extends Model {
         $this->id = $id;
     }
 
+    public function add2db() {
+        
+    }
+
+    public function get2db($id) {
+        
+    }
 
 }

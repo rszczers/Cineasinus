@@ -1,5 +1,5 @@
 <?php
-class Repertoire extends Model {
+class Repertoire implements Model {
     private $movieid;    
     private $id;
     private $city;
@@ -56,5 +56,17 @@ class Repertoire extends Model {
     function setPrice($price) {
         $this->price = $price;
     }
-   
+    
+    function add2db() {
+        
+    }
+
+    public function get2db($id) {
+        
+    }
+
+    public function get2db($id) {
+        
+    }
+
 }

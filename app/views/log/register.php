@@ -1,3 +1,3 @@
 <?php require '../app/views/header.php' ?>
-Login
+Register form
 <?php require '../app/views/footer.php' ?>

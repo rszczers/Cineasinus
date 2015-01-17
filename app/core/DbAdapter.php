@@ -30,7 +30,14 @@ class DbAdapter extends PDO {
 $stmt = $this->prepare($sql);                                             
 $stmt->execute(); 
         } catch (PDOException $e) {
-            throw $e;
+            echo "Błąd w zapytaniu\n";
+            throw $e;            
         }
     }
+    
+    function findByID($id, $table) {        
+        
+    }
+    
+    
 }

@@ -1,5 +1,5 @@
 <?php
-class Movie extends Model {
+class Movie implements Model {
     private $id;
     private $name;
     private $category;
@@ -43,6 +43,14 @@ class Movie extends Model {
 
     function setId($id) {
         $this->id = $id;
+    }
+    
+    function add2db() {
+        
+    }
+    
+    function get2db($id) {
+        
     }
 
 }

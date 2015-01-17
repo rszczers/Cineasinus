@@ -8,10 +8,17 @@ class Browse extends Controller {
         $db->add();
         $this->view('browse/index', "title", array());        
     }
+    /**
+     * Reads all movies from database
+     * @param type $perPage
+     */
     
-    public function all($perPage) {        
+    public function all($perPage, $pageNo) {        
+    }    
+    
+    public function book($id) {
+        
     }
-    
     
 }
 

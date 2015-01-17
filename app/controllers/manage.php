@@ -7,5 +7,19 @@ class Manage extends Controller {
     }
     
     public function CheckReservation($id) {        
-    }           
+    }
+    
+    public function showMovieRes($movie) {
+                    
+    }
+    
+    public function showUsersRes($userid) {
+        
+    }
+    
+    public function showRepertIDRes($userid) {
+        
+    }
+    
+    
 }
