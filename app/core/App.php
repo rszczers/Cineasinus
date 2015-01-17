@@ -14,7 +14,7 @@ class App {
         $url = $this->parseUrl();               
         
         //If there exsist such controller as the first argument, then
-        //pop it and make such; else – make default home controller        
+        //pop it and make such; else – make default home controller (home/index)     
         if(file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
             unset($url[0]);            

@@ -1,13 +1,12 @@
 <?php
 class Manage extends Controller {
-    public function addMovie($movie) {        
+    public function addMovie($movie) {
+        $movie->sqlAdd();
     }
     
-    public function delMovie($movie) {        
-    }
-    
-    public function CheckReservation($id) {        
-    }
+    public function delMovie($movie) {
+        $movie->sqlRm();
+    }        
     
     public function showMovieRes($movie) {
                     

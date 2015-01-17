@@ -29,7 +29,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Cineasinus</a>
+          <a class="navbar-brand" href="http://<?php echo App::ABS_PATH ?>">Cineasinus</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form action="log/in" class="navbar-form navbar-right" role="form" method="post">

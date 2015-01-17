@@ -65,7 +65,11 @@ class Reservation implements Model {
                "where 'id' = " . $this->id;
         return $sql;
     }
-        
-    
-
+            
+    public function sqlCheck() {
+        $sql = "update `reservations` " .
+               "set checked = '1' where "
+                . "id = " . $this->id;        
+        return $sql;
+    }
 }
