@@ -48,7 +48,7 @@ class Movie implements Model {
         $this->id = $id;
     }
     
-    function sql2db() {
+    function sqlAdd() {
         $sql = "insert into `movies` "
                 . "(`name`, `category`, `duration`, `director`,"
                 . "`description`, `plpremiere`, `fpremiere`)"
@@ -62,7 +62,13 @@ class Movie implements Model {
         return $sql;
     }
     
-    function getFromDb($id) {
+    function sqlRead($id) {
         
+    }
+    public function sqlRm() {
+        ;
+    }
+    public function sqlUpdate() {
+        ;
     }
 }

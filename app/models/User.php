@@ -71,8 +71,13 @@ class User implements Model {
         return $sql;
     }
 
-    public function getFromDb($id) {
+    function sqlRead($id) {
         
     }
-
+    public function sqlRm() {
+        ;
+    }
+    public function sqlUpdate() {
+        ;
+    }
 }
