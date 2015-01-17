@@ -2,13 +2,8 @@
 /**
  * Controller superclass; mediates data between models and views
  */
-class Controller {    
-    private $view;
-      
-    function __construct() {
-        
-    }
-    
+class Controller {
+   
     //create new model object
     protected function model($model) {
         require_once '../app/models/' . $model . '.php';
@@ -16,7 +11,7 @@ class Controller {
     }
     
     //populate selected view with specified data
-    public function view($view, $data = array()) {
+    protected function view($view, $data = array()) {
         require_once '../app/views/' . $view . '.php';       
     }
 }

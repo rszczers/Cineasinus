@@ -3,8 +3,11 @@
 class Error extends Controller {
 
     function __construct() {
-        $this->view->msg = "This page doesn't exist";
-        $this->view->render('error/index');
+        echo "error!";        
+    }
+    
+    public function index() {
+        $this->view('error/index', array('argument'));
     }
 
 }

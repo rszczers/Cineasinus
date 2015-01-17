@@ -9,7 +9,7 @@ class Auth {
         $checkLog = $_SESSION['loggedIn'];
         if($checkLog == false) {
             session_destroy();
-            header("location: ..login");
+            header("location: ../login");
             exit;
         }
     }
