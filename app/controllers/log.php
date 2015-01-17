@@ -13,6 +13,10 @@ class Log extends Controller {
     public function out() {
         $this->view('log/logout', "title", array('argument'));
     }
+    
+        public function register() {
+        $this->view('log/logout', "Rejestracja", array('argument'));
+    }
 
 }
 

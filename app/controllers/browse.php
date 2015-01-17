@@ -7,6 +7,11 @@ class Browse extends Controller {
         $db = new DbAdapter();
         $db->add();
         $this->view('browse/index', "title", array());        
-    }    
+    }
+    
+    public function all($perPage) {        
+    }
+    
+    
 }
 
