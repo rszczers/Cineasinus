@@ -5,9 +5,13 @@
  * @author rszczers
  */
 class ReservationDAO implements IReservationDAO {
+    private $db;
+    
+    function __construct() {
+        $this->db = new DbAdapter();
+    }
 
-
-    static function sqlAdd ($user) {
+    function sqlAdd ($user) {
         $sql = "insert into `reservations` "
                 . "(`userid`, `code`, `repertid`,"
                 . "`checked`)"
@@ -19,17 +23,17 @@ class ReservationDAO implements IReservationDAO {
         return $sql;        
     }
 
-    static function sqlRead($user) {
+    function sqlRead($user) {
         $sql = "select * from `reservations` where 'id' = " . 
                $user->getId();
         return $sql;
     }
-    static public function sqlRm($user) {
+    public function sqlRm($user) {
         $sql = "delete from `reservation` where " .
             "'id' = " . $user->getId();
         return sql;
     }
-    static public function sqlUpdate($user) {
+    public function sqlUpdate($user) {
         $sql = "update `reservation`" .
                "set userid = '" . $user->getUserId() . "'," .
                "code = '" . $user->getCode() . "'," .
@@ -39,42 +43,42 @@ class ReservationDAO implements IReservationDAO {
         return $sql;
     }
             
-    static public function sqlCheck($user) {
+    public function sqlCheck($user) {
         $sql = "update `reservations` " .
                "set checked = '1' where "
                 . "id = " . $user->getId();        
         return $sql;
     }
 
-    public static function getViaCode($arg) {
+    public function getViaCode($arg) {
+                
+    }
+
+    public function getViaId($arg) {
         
     }
 
-    public static function getViaId($arg) {
+    public function getViaRepertID($arg) {
         
     }
 
-    public static function getViaRepertID($arg) {
+    public function getViaUserID($arg) {
         
     }
 
-    public static function getViaUserID($arg) {
+    public function add($arg) {
         
     }
 
-    public static function add($arg) {
+    public function check($arg) {
         
     }
 
-    public static function check($arg) {
+    public function isChecked($arg) {
         
     }
 
-    public static function isChecked($arg) {
-        
-    }
-
-    public static function remove($arg) {
+    public function remove($arg) {
         
     }
 

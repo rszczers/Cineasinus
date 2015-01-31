@@ -1,6 +1,10 @@
 <?php
 class UsersDAO implements IUserDAO{
+    private $db;
     
+    function __construct() {
+        $this->db = new DbAdapter();
+    }
     
     public function add($user) {
         

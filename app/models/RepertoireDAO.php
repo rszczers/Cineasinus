@@ -12,7 +12,10 @@
  * @author rszczers
  */
 class RepertoireDAO implements IRepertoireDAO {
-    
+    private $db;
+    function __construct() {
+        $this->db = new DbAdapter();
+    }
      
     static public function sqlAdd($repertoire) {
         $sql = "insert into `repertoire` "

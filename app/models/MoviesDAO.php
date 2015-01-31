@@ -1,24 +1,17 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of MoviesDAO
- *
- * @author rszczers
- */
-class MoviesDAO implements IMovieDAO {    
-
+class MoviesDAO implements IMovieDAO {
+    private $db;
+    
+    function __construct() {
+        $this->db = new DbAdapter();
+    }
     
     public function add($movie) {
-        
+        $sql = $this->sqlAdd($movie);
+        $this->db->execQuery($sql);        
     }
 
-    public function edit($oldMovie) {
+    public function edit($newMovie) {
         
     }
 
@@ -58,12 +51,19 @@ class MoviesDAO implements IMovieDAO {
         
     }
 
-    public function populate() {
-        
+    public static function populate() {
+        $sql = "select * from 'movies'";
+        $result = array();
+        $tmp = $this->db->execQuery($sql);
+        foreach($tmp as $key => $row) {
+            $result[] = Movie::newMovie($row);
+        }
+        return $result;
     }
 
     public function remove($movie) {
-        
+        $sql = $this->sqlRm($movie);
+        $this->db->execQuery($sql);
     }
     
     function sqlAdd($movie) {
