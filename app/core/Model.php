@@ -6,4 +6,5 @@ interface Model {
     abstract function sqlRead();
     abstract function sqlUpdate();
     
+    
 }

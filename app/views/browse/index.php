@@ -1,3 +1,5 @@
 <?php require '../app/views/header.php' ?>
-Browsing page
+<table class="table table-hover">
+  
+</table>
 <?php require '../app/views/footer.php' ?>

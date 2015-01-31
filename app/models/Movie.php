@@ -1,5 +1,5 @@
 <?php
-class Movie implements Model {
+class Movie implements Model, MovieDAO {
     private $name;
     private $category;
     private $duration;
