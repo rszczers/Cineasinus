@@ -6,6 +6,11 @@ require_once '../app/core/DbAdapter.php';
  * Controller superclass; mediates data between models and views
  */
 class Controller {    
+    
+    function __construct() {
+        
+    }
+
     //create new model object
     protected function model($model) {
         require_once '../app/models/' . $model . '.php';        

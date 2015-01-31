@@ -1,9 +1,11 @@
 <?php
+require_once '../app/models/Movie.php';
+
 class MoviesDAO implements IMovieDAO {
     private $db;
     
     function __construct() {
-        $this->db = new DbAdapter();
+        $this->db = DbAdapter::getInstance();
     }
     
     public function add($movie) {
@@ -11,7 +13,7 @@ class MoviesDAO implements IMovieDAO {
         $this->db->execQuery($sql);
     }
 
-    public function edit($newMovie) {
+    public function edit($movie) {
         $sql = $this->sqlUpdate($movie);
         $this->db->execQuery($sql);
     }
@@ -52,12 +54,13 @@ class MoviesDAO implements IMovieDAO {
         
     }
 
-    public static function populate() {
-        $sql = "select * from 'movies'";
-        $result = array();
+    public function populate() {
+        $sql = "SELECT * FROM `movies`";
         $tmp = $this->db->execQuery($sql);
-        foreach($tmp as $key => $row) {
-            $result[] = Movie::newMovie($row);
+        
+        $result = array();
+        foreach($tmp as $key => $row) {                        
+            $result[] = new Movie($row);
         }
         return $result;
     }

@@ -8,20 +8,15 @@ class User implements Model {
     private $last;
     private $phone;    
     
-    function __construct($id, $passhash, $email, $rank, $avatar, $first, $last, $phone) {
-        $this->id = $id;
-        $this->passhash = $passhash;
-        $this->email = $email;
-        $this->rank = $rank;
-        $this->avatar = $avatar;
-        $this->first = $first;
-        $this->last = $last;
-        $this->phone = $phone;        
-    }
-    
-    public static function newUser($array) {
-        return self::__construct($array[0], $array[1], $array[2], $array[4], 
-            $array[5], $array[6]);
+    function __construct($array) {
+        $this->id = $array[0];
+        $this->passhash = $array[1];
+        $this->email = $array[2];
+        $this->rank = $array[3];
+        $this->avatar = $array[4];
+        $this->first = $array[5];
+        $this->last = $array[6];
+        $this->phone = $array[7];        
     }
     
     function getId() {

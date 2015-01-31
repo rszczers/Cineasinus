@@ -7,19 +7,22 @@ class UsersDAO implements IUserDAO{
     }
     
     public function add($user) {
-        
+        $sql = $this->sqlAdd($user);
+        $this->db->execQuery($sql);
     }
 
     public function chRole($arg) {
         
     }
 
-    public function delete($arg) {
-        
+    public function delete($user) {
+        $sql = $this->sqlRm($user);
+        $this->db->execQuery($sql);
     }
 
-    public function edit($arg) {
-        
+    public function edit($user) {
+        $sql = $this->sqlUpdate($user);
+        $this->db->execQuery($sql);
     }
 
     public function getAvatar($args) {
@@ -93,4 +96,16 @@ class UsersDAO implements IUserDAO{
                "where 'id' = " . $user->getId();
         return $sql;
     }
+
+    public function populate() {
+        $sql = "SELECT * FROM `users`";
+        $tmp = $this->db->execQuery($sql);
+        
+        $result = array();
+        foreach($tmp as $key => $row) {                        
+            $result[] = new User($row);
+        }
+        return $result;
+    }
+
 }

@@ -13,8 +13,9 @@ class DbAdapter extends PDO {
     }
     
     public static function getInstance() {
-        if(!self::$instance) {            
-            self::$instance = new DbAdapter();        
+        if(!self::$instance) {
+            $tmp = new DbAdapter();
+            self::$instance = $tmp;   
         }
         return self::$instance;        
     }
@@ -30,7 +31,7 @@ class DbAdapter extends PDO {
     }
         
    
-    public static function execQuery($sql) {        
+    public function execQuery($sql) {        
         $sth = parent::prepare($sql);
         $sth->execute();
          

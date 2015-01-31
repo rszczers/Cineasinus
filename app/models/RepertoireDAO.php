@@ -51,8 +51,9 @@ class RepertoireDAO implements IRepertoireDAO {
         return $sql;
     }
 
-    public static function add($movie) {
-        
+    public static function add($repertoire) {
+        $sql = $this->sqlAdd($repertoire);
+        $this->db->execQuery($sql);        
     }
 
     public static function edit($movie) {

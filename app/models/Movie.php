@@ -1,5 +1,5 @@
 <?php
-class Movie implements Model, MovieDAO {
+class Movie implements Model {    
     private $name;
     private $category;
     private $duration;
@@ -10,22 +10,16 @@ class Movie implements Model, MovieDAO {
     private $fpremiere;
     private $poster;
     
-    function __construct($name, $category, $duration, $director,
-            $description, $plpremiere, $id, $poster) {
-        $this->name = $name;
-        $this->category = $category;
-        $this->duration = $duration;
-        $this->director = $director;
-        $this->description = $description;
-        $this->plpremiere = $plpremiere;
-        $this->id = $id;
-        $this->poster = $poster;    
-    }
-    
-    public static function newMovie($array) {
-        return self::__construct($array[0], $array[1], $array[2], $array[4], 
-                $array[5], $array[6], $array[7], $array[8]);
-    }
+    function __construct($array) {
+        $this->name = $array['name'];
+        $this->category = $array['category'];
+        $this->duration = $array['duration'];
+        $this->director = $array['director'];
+        $this->description = $array['description'];
+        $this->plpremiere = $array['plpremiere'];
+        $this->id = $array['id'];
+        $this->poster = $array['poster'];    
+    }        
     
     function getId() {
         return $this->id;
@@ -50,7 +44,19 @@ class Movie implements Model, MovieDAO {
     function getDescription() {
         return $this->description;
     }
+    
+    function getPlpremiere() {
+        return $this->plpremiere;
+    }
 
+    function getFpremiere() {
+        return $this->fpremiere;
+    }
+
+    function getPoster() {
+        return $this->poster;
+    }
+    
     function setId($id) {
         $this->id = $id;
     }
