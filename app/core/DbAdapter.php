@@ -19,18 +19,18 @@ class DbAdapter extends PDO {
         return self::$instance;        
     }
       
-    function findById($id, $table) {
+    public static function findById($id, $table) {
         $sql = "select * from " . $table . " where id=" . $table;
         self::fetch($sql);
     }
     
-    public function length($table) {
+    public static function length($table) {
         $tmp = self::execQuery("SELECT COUNT(*) AS count FROM ". $table . ";");
         return $tmp['count'];
     }
         
    
-    public function execQuery($sql) {        
+    public static function execQuery($sql) {        
         $sth = parent::prepare($sql);
         $sth->execute();
          
