@@ -19,6 +19,11 @@ class User implements Model {
         $this->phone = $phone;        
     }
     
+    public static function newUser($array) {
+        return self::__construct($array[0], $array[1], $array[2], $array[4], 
+            $array[5], $array[6]);
+    }
+    
     function getId() {
         return $this->id;
     }

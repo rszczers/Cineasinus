@@ -23,6 +23,11 @@ class Movie implements Model, MovieDAO {
         
     }
     
+    public static function newMovie($array) {
+        return self::__construct($array[0], $array[1], $array[2], $array[4], 
+                $array[5], $array[6], $array[7], $array[8]);
+    }
+    
     function getId() {
         return $this->id;
     }

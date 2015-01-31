@@ -16,6 +16,11 @@ class Repertoire implements Model {
         $this->price = $price;
     }
     
+    public static function newRepertoire($array) {
+        return self::__construct($array[0], $array[1], $array[2], $array[4], 
+            $array[5]);
+    }
+    
     function getMovieid() {
         return $this->movieid;
     }

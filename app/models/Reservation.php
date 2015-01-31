@@ -14,6 +14,10 @@ class Reservation implements Model {
         $this->checked = $checked;
     }
     
+    public static function newReservation($array) {
+        return self::__construct($array[0], $array[1], $array[2], $array[4]);
+    }
+    
     function setId($id) {
         $this->id = $id;
     }
