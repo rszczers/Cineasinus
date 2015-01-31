@@ -16,7 +16,7 @@ class MoviesDAO implements IMovieDAO {
         
     }
 
-    public static function edit($movie) {
+    public static function edit($oldMovie) {
         
     }
 

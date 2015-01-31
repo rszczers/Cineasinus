@@ -12,40 +12,8 @@
  * @author rszczers
  */
 class RepertoireDAO implements IRepertoireDAO {
-public static function edit(){
-}    public static function getViaCinemaName() {
-        
-    }
-
-    public static function getViaCity() {
-        
-    }
-
-    public static function getViaDate() {
-        
-    }
-
-    public static function getViaId() {
-        
-    }
-
-    public static function getViaMovieId() {
-        
-    }
-
-    public static function getViaPrice() {
-        
-    }
-
-    public static function populate() {
-        
-    }
-
-    public static function remove() {
-        
-    }
-
-   
+    
+     
     static public function sqlAdd($repertoire) {
         $sql = "insert into `repertoire` "
                 . "(`movieid`, `city`, `cinemaname`,"
@@ -79,4 +47,45 @@ public static function edit(){
                "where 'id' = " . $repertoire->getId();
         return $sql;
     }
+
+    public static function add($movie) {
+        
+    }
+
+    public static function edit($movie) {
+        
+    }
+
+    public static function getViaCinemaName($arg) {
+        
+    }
+
+    public static function getViaCity($arg) {
+        
+    }
+
+    public static function getViaDate($arg) {
+        
+    }
+
+    public static function getViaId($arg) {
+        
+    }
+
+    public static function getViaMovieId($arg) {
+        
+    }
+
+    public static function getViaPrice($arg) {
+        
+    }
+
+    public static function populate() {
+        
+    }
+
+    public static function remove($movie) {
+        
+    }
+
 }
