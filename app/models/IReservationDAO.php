@@ -1,12 +1,12 @@
 <?php
 interface IReservationDAO { 
-    public static function getViaId($arg);
-    public static function getViaUserID($arg);
-    public static function getViaCode($arg);
-    public static function getViaRepertID($arg);
-    public static function isChecked($arg);
+    public function getViaId($arg);
+    public function getViaUserID($arg);
+    public function getViaCode($arg);
+    public function getViaRepertID($arg);
+    public function isChecked($arg);
     
-    public static function check($arg);
-    public static function add($arg);
-    public static function remove($arg);    
+    public function check($arg);
+    public function add($arg);
+    public function remove($arg);    
 }

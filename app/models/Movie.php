@@ -19,8 +19,7 @@ class Movie implements Model, MovieDAO {
         $this->description = $description;
         $this->plpremiere = $plpremiere;
         $this->id = $id;
-        $this->poster = $poster;
-        
+        $this->poster = $poster;    
     }
     
     public static function newMovie($array) {

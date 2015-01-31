@@ -11,18 +11,18 @@
  * @author rszczers
  */
 interface IUserDAO {
-    public static function getViaId($args);
-    public static function getViaPasshash($args);
-    public static function getViaEmail($args);
-    public static function getViaRank($args);
-    public static function getAvatar($args);
-    public static function getViaFirst($args);
-    public static function getViaLast($args);
-    public static function getViaPhone($args);
-    public static function getViaRole($args);
+    public function getViaId($args);
+    public function getViaPasshash($args);
+    public function getViaEmail($args);
+    public function getViaRank($args);
+    public function getAvatar($args);
+    public function getViaFirst($args);
+    public function getViaLast($args);
+    public function getViaPhone($args);
+    public function getViaRole($args);
        
-    public static function add($arg);
-    public static function edit($arg);
-    public static function delete($arg);
-    public static function chRole($arg);
+    public function add($arg);
+    public function edit($arg);
+    public function delete($arg);
+    public function chRole($arg);
 }

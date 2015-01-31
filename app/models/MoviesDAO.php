@@ -8,11 +8,12 @@ class MoviesDAO implements IMovieDAO {
     
     public function add($movie) {
         $sql = $this->sqlAdd($movie);
-        $this->db->execQuery($sql);        
+        $this->db->execQuery($sql);
     }
 
     public function edit($newMovie) {
-        
+        $sql = $this->sqlUpdate($movie);
+        $this->db->execQuery($sql);
     }
 
     public function getPlPremiere($string) {
