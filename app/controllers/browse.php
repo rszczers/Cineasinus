@@ -10,7 +10,6 @@ class Browse extends Controller {
     
     public function index() {        
         $this->view('browse/index', "title", array());         
-        print_r($this->db->length('movies'));
     }
     
     /**

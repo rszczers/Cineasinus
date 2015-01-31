@@ -56,38 +56,5 @@ class Repertoire implements Model {
     function setPrice($price) {
         $this->price = $price;
     }
-
-    public function sqlAdd() {
-        $sql = "insert into `repertoire` "
-                . "(`movieid`, `city`, `cinemaname`,"
-                . "`date`, `price`)"
-                . " values (" .
-                "'" . $this->movieid . "," .                
-                "'" . $this->city . "," .
-                "'" . $this->cinemaname . "," .
-                "'" . $this->date . "," .
-                "'" . $this->price . ")";
-        return $sql;
-    }
-
-    function sqlRead($id) {
-        $sql = "select * from `repertoire` where 'id' = " . 
-            $this->id;
-        return $sql;
-    }
-    public function sqlRm() {
-        $sql = "delete from `repertoire` where " .
-            "'id' = " . $this->id;
-        return sql;        
-    }
-    public function sqlUpdate() {
-        $sql = "update `repertoire`" .
-               "set movieid = '" . $this->movieid . "'," .
-               "city = '" . $this->city . "'," .
-               "cinemaname = '" . $this->cinemaname . "'," .
-               "date = '" . $this->date . "'," .
-               "price = '" . $this->price . "' " .
-               "where 'id' = " . $this->id;
-        return $sql;
-    }
+    
 }

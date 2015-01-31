@@ -1,20 +1,9 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author rszczers
- */
-interface ReservationDAO { 
-    public static function getId($arg);
-    public static function getUserID($arg);
-    public static function getCode($arg);
-    public static function getRepertID($arg);
+interface IReservationDAO { 
+    public static function getViaId($arg);
+    public static function getViaUserID($arg);
+    public static function getViaCode($arg);
+    public static function getViaRepertID($arg);
     public static function isChecked($arg);
     
     public static function check($arg);
