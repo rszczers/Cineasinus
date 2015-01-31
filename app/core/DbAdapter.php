@@ -19,12 +19,14 @@ class DbAdapter extends PDO {
         return self::$instance;        
     }
       
-    function findByID($id, $table) {                
+    function findById($id, $table) {
+        $sql = "select * from " . $table . " where id=" . $table;
+        self::fetch($sql);
     }
     
     public function length($table) {
         $tmp = self::fetch("SELECT COUNT(*) AS count FROM ". $table . ";");
-        return $tmp[0]->count;
+        return $tmp['count'];
     }
         
    
@@ -33,10 +35,10 @@ class DbAdapter extends PDO {
         $sth->execute();
          
         $result = array();
-        $row = $sth->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT);
+        $row = $sth->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
         while($row != null) {
             $result[] = $row;
-            $row = $sth->fetch(PDO::FETCH_OBJ, PDO::FETCH_ORI_NEXT);
+            $row = $sth->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
         }
         return $result;
     }

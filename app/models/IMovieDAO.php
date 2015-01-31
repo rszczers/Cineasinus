@@ -59,7 +59,7 @@ Interface IMovieDAO {
      */
     public static function populate();
     
-    public static function remove();
-    public static function add();
-    public static function edit();
+    public static function remove($movie);
+    public static function add($movie);
+    public static function edit($movie);
 }

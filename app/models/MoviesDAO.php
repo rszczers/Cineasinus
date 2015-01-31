@@ -12,11 +12,11 @@
  * @author rszczers
  */
 class MoviesDAO implements IMovieDAO {
-    public static function add() {
+    public static function add($movie) {
         
     }
 
-    public static function edit() {
+    public static function edit($movie) {
         
     }
 
@@ -60,7 +60,7 @@ class MoviesDAO implements IMovieDAO {
         
     }
 
-    public static function remove() {
+    public static function remove($movie) {
         
     }
     
