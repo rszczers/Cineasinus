@@ -33,43 +33,4 @@ class Reservation implements Model {
     function getRepertid() {
         return $this->repertid;
     }
-    
-    function sqlAdd () {
-        $sql = "insert into `reservations` "
-                . "(`userid`, `code`, `repertid`,"
-                . "`checked`)"
-                . " values (" .
-                "'" . $this->userid . "," .                
-                "'" . $this->code . "," .
-                "'" . $this->repertid . "," .                
-                "'" . $this->checked . ")";
-        return $sql;        
-    }
-
-    function sqlRead($id) {
-        $sql = "select * from `reservations` where 'id' = " . 
-               $this->id;
-        return $sql;
-    }
-    public function sqlRm() {
-        $sql = "delete from `reservation` where " .
-            "'id' = " . $this->id;
-        return sql;
-    }
-    public function sqlUpdate() {
-        $sql = "update `reservation`" .
-               "set userid = '" . $this->userid . "'," .
-               "code = '" . $this->code . "'," .
-               "repertid = '" . $this->repertid . "'," .
-               "checked = '" . $this->checked . "' " .
-               "where 'id' = " . $this->id;
-        return $sql;
-    }
-            
-    public function sqlCheck() {
-        $sql = "update `reservations` " .
-               "set checked = '1' where "
-                . "id = " . $this->id;        
-        return $sql;
-    }
 }

@@ -51,32 +51,32 @@ public static function edit(){
                 . "(`movieid`, `city`, `cinemaname`,"
                 . "`date`, `price`)"
                 . " values (" .
-                "'" . $this->movieid . "," .                
-                "'" . $this->city . "," .
-                "'" . $this->cinemaname . "," .
-                "'" . $this->date . "," .
-                "'" . $this->price . ")";
+                "'" . $repertoire->movieid . "," .                
+                "'" . $repertoire->city . "," .
+                "'" . $repertoire->cinemaname . "," .
+                "'" . $repertoire->date . "," .
+                "'" . $repertoire->price . ")";
         return $sql;
     }
 
     static function sqlRead($id) {
         $sql = "select * from `repertoire` where 'id' = " . 
-            $this->id;
+            $repertoire->id;
         return $sql;
     }
     static public function sqlRm($repertoire) {
         $sql = "delete from `repertoire` where " .
-            "'id' = " . $this->id;
+            "'id' = " . $repertoire->id;
         return sql;        
     }
     static public function sqlUpdate($repertoire) {
         $sql = "update `repertoire`" .
-               "set movieid = '" . $this->movieid . "'," .
-               "city = '" . $this->city . "'," .
-               "cinemaname = '" . $this->cinemaname . "'," .
-               "date = '" . $this->date . "'," .
-               "price = '" . $this->price . "' " .
-               "where 'id' = " . $this->id;
+               "set movieid = '" . $repertoire->movieid . "'," .
+               "city = '" . $repertoire->city . "'," .
+               "cinemaname = '" . $repertoire->cinemaname . "'," .
+               "date = '" . $repertoire->date . "'," .
+               "price = '" . $repertoire->price . "' " .
+               "where 'id' = " . $repertoire->id;
         return $sql;
     }
 }

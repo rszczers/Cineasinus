@@ -10,7 +10,7 @@
  *
  * @author rszczers
  */
-Interface MovieDAO {
+Interface IMovieDAO {
 
     public static function getViaName($arg);
 

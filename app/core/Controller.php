@@ -5,14 +5,7 @@ require_once '../app/core/DbAdapter.php';
 /**
  * Controller superclass; mediates data between models and views
  */
-class Controller {
-    
-    protected $db;
-    
-    function __construct() {        
-        $this->db = DbAdapter::getInstance();
-    }
-
+class Controller {    
     //create new model object
     protected function model($model) {
         require_once '../app/models/' . $model . '.php';        
@@ -23,8 +16,4 @@ class Controller {
     protected function view($view, $title, $data = array()) {
         require_once '../app/views/' . $view . '.php';       
     }
-    
-    protected function fetch($sql) {
-        $this->db->fetch($sql);
-    }    
 }

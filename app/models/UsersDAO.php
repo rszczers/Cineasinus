@@ -1,16 +1,4 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of UsersDAO
- *
- * @author rszczers
- */
 class UsersDAO implements IUserDAO{
     public static function add($arg) {
         
@@ -69,34 +57,34 @@ class UsersDAO implements IUserDAO{
                 . "(`passhash`, `email`, `rank`,"
                 . "`first`, `last`, `phone`)"                
                 . " values (" .
-                "'" . $user->gethashpass . "," .                
-                "'" . $this->email . "," .
-                "'" . $this->rank . "," .                
-                "'" . $this->first . "," .                
-                "'" . $this->last . "," .                
-                "'" . $this->phone . ")";
+                "'" . $user->getPasshass() . "," .                
+                "'" . $user->getEmail() . "," .
+                "'" . $user->getRank() . "," .                
+                "'" . $user->getFirst() . "," .                
+                "'" . $user->getLast() . "," .                
+                "'" . $user->getPhone() . ")";
         return $sql;
     }
 
     function sqlRead($user) {
        $sql = "select * from `users` where 'id' = " . 
-               $this->id;
+               $user->getId();
        return $sql;
     }
     public function sqlRm($user) {
         $sql = "delete from `users` where " .
-            "'id' = " . $this->id;
+            "'id' = " . $user->getId();
         return sql;
     }
     public function sqlUpdate($user) {
         $sql = "update `users`" .
-               "set passhash = '" . $this->passhash . "'," .
-               "email = '" . $this->email . "'," .
-               "rank = '" . $this->rank . "'," .
-               "first = '" . $this->first . "'" .
-               "last = '" . $this->last . "'" .
-               "phone = '" . $this->phone . "' " .               
-               "where 'id' = " . $this->id;
+               "set passhash = '" . $user->getPasshash() . "'," .
+               "email = '" . $user->getEmail() . "'," .
+               "rank = '" . $user->getRank() . "'," .
+               "first = '" . $user->getFirst() . "'" .
+               "last = '" . $user->getLast() . "'" .
+               "phone = '" . $user->getPhone() . "' " .               
+               "where 'id' = " . $user->getId();
         return $sql;
     }
 }

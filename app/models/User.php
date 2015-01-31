@@ -16,8 +16,7 @@ class User implements Model {
         $this->avatar = $avatar;
         $this->first = $first;
         $this->last = $last;
-        $this->phone = $phone;
-        $this->reservationid = $reservationid;
+        $this->phone = $phone;        
     }
     
     function getId() {

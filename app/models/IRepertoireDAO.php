@@ -1,6 +1,6 @@
 <?php
 
-interface RepertoireDAO {    
+interface IRepertoireDAO {    
     public static function getViaMovieId();
     public static function getViaId();
     public static function getViaCity();
