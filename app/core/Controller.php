@@ -23,5 +23,8 @@ class Controller {
     protected function view($view, $title, $data = array()) {
         require_once '../app/views/' . $view . '.php';       
     }
-        
+    
+    protected function fetch($sql) {
+        $this->db->fetch($sql);
+    }    
 }

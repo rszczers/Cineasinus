@@ -8,9 +8,10 @@ class Movie implements Model, MovieDAO {
     private $plpremiere;
     private $id;
     private $fpremiere;
+    private $poster;
     
     function __construct($name, $category, $duration, $director,
-            $description, $plpremiere, $id) {
+            $description, $plpremiere, $id, $poster) {
         $this->name = $name;
         $this->category = $category;
         $this->duration = $duration;
@@ -18,6 +19,8 @@ class Movie implements Model, MovieDAO {
         $this->description = $description;
         $this->plpremiere = $plpremiere;
         $this->id = $id;
+        $this->poster = $poster;
+        
     }
     
     function getId() {
@@ -86,4 +89,5 @@ class Movie implements Model, MovieDAO {
                "where 'id' = " . $this->id;
         return $sql;
     }
+    
 }

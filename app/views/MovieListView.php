@@ -1,14 +1,16 @@
 <?php
 class MovieListView implements View{
-    private $lenght;    
-    private $perPage;
+    private $data;
     
-    function __construct($lenght, $perPage) {
-        $this->lenght = $lenght;
-        $this->perPage = $perPage;
+    function __construct($data) {
+        $this->data = $data;
     }
-
-    public function show() {        
+    
+    public function show($data) {
+        echo "<table class=\"table table-hover\">";
+        echo "";
+        echo "";
+        echo "</table>";
     }
 
 }
