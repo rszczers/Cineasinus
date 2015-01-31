@@ -52,7 +52,7 @@ class UsersDAO implements IUserDAO{
         
     }
 
-    public function sqlAdd($user) {
+    public static function sqlAdd($user) {
         $sql = "insert into `users` "
                 . "(`passhash`, `email`, `rank`,"
                 . "`first`, `last`, `phone`)"                
@@ -66,17 +66,17 @@ class UsersDAO implements IUserDAO{
         return $sql;
     }
 
-    function sqlRead($user) {
+    public static function sqlRead($user) {
        $sql = "select * from `users` where 'id' = " . 
                $user->getId();
        return $sql;
     }
-    public function sqlRm($user) {
+    public static function sqlRm($user) {
         $sql = "delete from `users` where " .
             "'id' = " . $user->getId();
         return sql;
     }
-    public function sqlUpdate($user) {
+    public static function sqlUpdate($user) {
         $sql = "update `users`" .
                "set passhash = '" . $user->getPasshash() . "'," .
                "email = '" . $user->getEmail() . "'," .

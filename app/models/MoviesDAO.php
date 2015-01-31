@@ -69,37 +69,37 @@ class MoviesDAO implements IMovieDAO {
                 . "(`name`, `category`, `duration`, `director`,"
                 . "`description`, `plpremiere`, `fpremiere`)"
                 . " values (" .
-                "'" . $movie->name . "," .
-                "'" . $movie->category . "," .
-                "'" . $movie->duration . "," .
-                "'" . $movie->director . "," .
-                "'" . $movie->description . "," .
-                "'" . $movie->plpremiere . "," .
-                "'" . $movie->fpremiere . ")";
+                "'" . $movie->getName() . "," .
+                "'" . $movie->getCategory() . "," .
+                "'" . $movie->getDuration() . "," .
+                "'" . $movie->getDirector() . "," .
+                "'" . $movie->getDescription() . "," .
+                "'" . $movie->getPlPremiere() . "," .
+                "'" . $movie->getFPremiere() . ")";
         return $sql;
     }
     
     static function sqlRead($id) {
         $sql = "select * from `movies` where 'id' = " . 
-            $movie->id;
+            $movie->getId();
         return $sql;        
     }
     static public function sqlRm($movie) {
         $sql = "delete from `movies` where " .
-            "'id' = " . $movie->id;
+            "'id' = " . $movie->getId();
         return sql;
     }
     
     static public function sqlUpdate($movie) {
         $sql = "update `movies`" .
-               "set name = '" . $movie->name . "'," .
-               "category = '" . $movie->category . "'," .
-               "duration = '" . $movie->duration . "'," .
-               "director = '" . $movie->director . "'" .
-               "description = '" . $movie->description . "'" .
-               "plpremiere = '" . $movie->plpremiere . "'" .
-               "fpremiere = '" . $movie->fpremiere . "' " .
-               "where 'id' = " . $movie->id;
+               "set name = '" . $movie->getName() . "'," .
+               "category = '" . $movie->getCategory() . "'," .
+               "duration = '" . $movie->getDuration() . "'," .
+               "director = '" . $movie->getDirector() . "'" .
+               "description = '" . $movie->getDescription() . "'" .
+               "plpremiere = '" . $movie->getPlPremiere() . "'" .
+               "fpremiere = '" . $movie->getFPremiere() . "' " .
+               "where 'id' = " . $movie->getId();
         return $sql;
     }
 

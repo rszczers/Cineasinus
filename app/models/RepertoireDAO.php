@@ -51,32 +51,32 @@ public static function edit(){
                 . "(`movieid`, `city`, `cinemaname`,"
                 . "`date`, `price`)"
                 . " values (" .
-                "'" . $repertoire->movieid . "," .                
-                "'" . $repertoire->city . "," .
-                "'" . $repertoire->cinemaname . "," .
-                "'" . $repertoire->date . "," .
-                "'" . $repertoire->price . ")";
+                "'" . $repertoire->getMovieId() . "," .                
+                "'" . $repertoire->getCity() . "," .
+                "'" . $repertoire->getCinemaName() . "," .
+                "'" . $repertoire->getDate() . "," .
+                "'" . $repertoire->getPrice() . ")";
         return $sql;
     }
 
     static function sqlRead($id) {
         $sql = "select * from `repertoire` where 'id' = " . 
-            $repertoire->id;
+            $repertoire->getId();
         return $sql;
     }
     static public function sqlRm($repertoire) {
         $sql = "delete from `repertoire` where " .
-            "'id' = " . $repertoire->id;
+            "'id' = " . $repertoire->getId();
         return sql;        
     }
     static public function sqlUpdate($repertoire) {
         $sql = "update `repertoire`" .
-               "set movieid = '" . $repertoire->movieid . "'," .
-               "city = '" . $repertoire->city . "'," .
-               "cinemaname = '" . $repertoire->cinemaname . "'," .
-               "date = '" . $repertoire->date . "'," .
-               "price = '" . $repertoire->price . "' " .
-               "where 'id' = " . $repertoire->id;
+               "set movieid = '" . $repertoire->getMovieId() . "'," .
+               "city = '" . $repertoire->getCity() . "'," .
+               "cinemaname = '" . $repertoire->getCinemaName() . "'," .
+               "date = '" . $repertoire->getDate() . "'," .
+               "price = '" . $repertoire->getPrice() . "' " .
+               "where 'id' = " . $repertoire->getId();
         return $sql;
     }
 }

@@ -30,7 +30,11 @@ class Reservation implements Model {
         return $this->code;
     }
 
-    function getRepertid() {
+    function getRepertId() {
         return $this->repertid;
+    }
+    
+    function isChecked() {
+        return $this->checked;
     }
 }
