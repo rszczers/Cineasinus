@@ -23,8 +23,8 @@ class DbAdapter extends PDO {
     }
     
     public function length($table) {
-        $tmp = self::fetch("SELECT COUNT(*) FROM ". $table . ";");
-        return "chuj";
+        $tmp = self::fetch("SELECT COUNT(*) AS count FROM ". $table . ";");
+        return $tmp[0]->count;
     }
         
    
