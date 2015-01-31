@@ -1,58 +1,60 @@
 <?php
 class UsersDAO implements IUserDAO{
-    public static function add($arg) {
+    
+    
+    public function add($user) {
         
     }
 
-    public static function chRole($arg) {
+    public function chRole($arg) {
         
     }
 
-    public static function delete($arg) {
+    public function delete($arg) {
         
     }
 
-    public static function edit($arg) {
+    public function edit($arg) {
         
     }
 
-    public static function getAvatar($args) {
+    public function getAvatar($args) {
         
     }
 
-    public static function getViaEmail($args) {
+    public function getViaEmail($args) {
         
     }
 
-    public static function getViaFirst($args) {
+    public function getViaFirst($args) {
         
     }
 
-    public static function getViaId($args) {
+    public function getViaId($args) {
         
     }
 
-    public static function getViaLast($args) {
+    public function getViaLast($args) {
         
     }
 
-    public static function getViaPasshash($args) {
+    public function getViaPasshash($args) {
         
     }
 
-    public static function getViaPhone($args) {
+    public function getViaPhone($args) {
         
     }
 
-    public static function getViaRank($args) {
+    public function getViaRank($args) {
         
     }
 
-    public static function getViaRole($args) {
+    public function getViaRole($args) {
         
     }
 
-    public static function sqlAdd($user) {
+    public function sqlAdd($user) {
         $sql = "insert into `users` "
                 . "(`passhash`, `email`, `rank`,"
                 . "`first`, `last`, `phone`)"                
@@ -66,17 +68,17 @@ class UsersDAO implements IUserDAO{
         return $sql;
     }
 
-    public static function sqlRead($user) {
+    public function sqlRead($user) {
        $sql = "select * from `users` where 'id' = " . 
                $user->getId();
        return $sql;
     }
-    public static function sqlRm($user) {
+    public function sqlRm($user) {
         $sql = "delete from `users` where " .
             "'id' = " . $user->getId();
         return sql;
     }
-    public static function sqlUpdate($user) {
+    public function sqlUpdate($user) {
         $sql = "update `users`" .
                "set passhash = '" . $user->getPasshash() . "'," .
                "email = '" . $user->getEmail() . "'," .

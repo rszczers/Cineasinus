@@ -12,54 +12,54 @@
  */
 Interface IMovieDAO {
 
-    public static function getViaName($arg);
+    public function getViaName($arg);
 
   /**
      * reads all movies from database containing $string in category
      */
-    public static function getViaCategory($string);
+    public function getViaCategory($string);
 
   /**
      * reads all movies from database containing $string as duration
      */
-    public static function getViaDuration($string);
+    public function getViaDuration($string);
 
   /**
      * reads all movies from database containing $string as director
      */
-    public static function getViaDirector($string);
+    public function getViaDirector($string);
 
   /**
      * reads all movies from database containing $string in Description
      */
-    public static function getViaDescription($string);
+    public function getViaDescription($string);
 
   /**
      * reads all movies from database containing $string 
      */
-    public static function getPlPremiere($string);
+    public function getPlPremiere($string);
 
   /**
      * reads all movies from database containing $string
      */
-    public static function getViaId($string);
+    public function getViaId($string);
 
     /**
      * reads all movies from database containing $string
      */
-    public static function getViaFPremiere($string);
+    public function getViaFPremiere($string);
 
     /**
      * reads all posters from database containing $string
      */
-    public static function getPoster($string);
+    public function getPoster($string);
 
     /**
      * Reads all movies from database
      */
-    public static function populate();
+    public function populate();
     
-    public static function remove($movie);
-    public static function add($movie);
-    public static function edit($movie);
+    public function remove($movie);
+    public function add($movie);
+    public function edit($movie);
 }

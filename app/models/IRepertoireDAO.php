@@ -1,16 +1,16 @@
 <?php
 
 interface IRepertoireDAO {    
-    public static function getViaMovieId($arg);
-    public static function getViaId($arg);
-    public static function getViaCity($arg);
-    public static function getViaCinemaName($arg);
-    public static function getViaDate($arg);
-    public static function getViaPrice($arg);
+    public function getViaMovieId($arg);
+    public function getViaId($arg);
+    public function getViaCity($arg);
+    public function getViaCinemaName($arg);
+    public function getViaDate($arg);
+    public function getViaPrice($arg);
     
-    public static function populate();
+    public function populate();
     
-    public static function add($movie);
-    public static function remove($movie);
-    public static function edit($movie);    
+    public function add($movie);
+    public function remove($movie);
+    public function edit($movie);    
 }

@@ -11,60 +11,62 @@
  *
  * @author rszczers
  */
-class MoviesDAO implements IMovieDAO {
-    public static function add($movie) {
+class MoviesDAO implements IMovieDAO {    
+
+    
+    public function add($movie) {
         
     }
 
-    public static function edit($oldMovie) {
+    public function edit($oldMovie) {
         
     }
 
-    public static function getPlPremiere($string) {
+    public function getPlPremiere($string) {
         
     }
 
-    public static function getPoster($string) {
+    public function getPoster($string) {
         
     }
 
-    public static function getViaCategory($string) {
+    public function getViaCategory($string) {
         
     }
 
-    public static function getViaDescription($string) {
+    public function getViaDescription($string) {
         
     }
 
-    public static function getViaDirector($string) {
+    public function getViaDirector($string) {
         
     }
 
-    public static function getViaDuration($string) {
+    public function getViaDuration($string) {
         
     }
 
-    public static function getViaFPremiere($string) {
+    public function getViaFPremiere($string) {
         
     }
 
-    public static function getViaId($string) {
+    public function getViaId($string) {
         
     }
 
-    public static function getViaName($arg) {
+    public function getViaName($arg) {
         
     }
 
-    public static function populate() {
+    public function populate() {
         
     }
 
-    public static function remove($movie) {
+    public function remove($movie) {
         
     }
     
-    static function sqlAdd($movie) {
+    function sqlAdd($movie) {
         $sql = "insert into `movies` "
                 . "(`name`, `category`, `duration`, `director`,"
                 . "`description`, `plpremiere`, `fpremiere`)"
@@ -79,18 +81,18 @@ class MoviesDAO implements IMovieDAO {
         return $sql;
     }
     
-    static function sqlRead($id) {
+    function sqlRead($id) {
         $sql = "select * from `movies` where 'id' = " . 
             $movie->getId();
         return $sql;        
     }
-    static public function sqlRm($movie) {
+    public function sqlRm($movie) {
         $sql = "delete from `movies` where " .
             "'id' = " . $movie->getId();
         return sql;
     }
     
-    static public function sqlUpdate($movie) {
+    public function sqlUpdate($movie) {
         $sql = "update `movies`" .
                "set name = '" . $movie->getName() . "'," .
                "category = '" . $movie->getCategory() . "'," .
