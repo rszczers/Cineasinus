@@ -1,37 +1,35 @@
 <?php
 class DbAdapter extends PDO {
-    private static $instance = null;   
     
-    private $dsn = "mysql:host=abraham.linuxpl.info;dbname=abraham_cineasinus";
-    private $username = "abraham_cineroot";
-    private $passwd = "sprytnasarnajesledzie1";
+    private static $instance = false; 
+    
+    private static $dsn = "mysql:host=abraham.linuxpl.info;dbname=abraham_cineasinus";
+    private static $username = "abraham_cineroot";
+    private static $passwd = "sprytnasarnajesledzie1";
     
     private function DbAdapter() {
-        parent::__construct($this->dsn, $this->username, $this->passwd);                
+        parent::__construct(self::$dsn, self::$username, self::$passwd);                
         parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);        
     }
     
-    public function getInstance() {
-        if(!$this->instance) {
-            try {
-                $this->instance = new DbAdapter();
-            } catch (PDOException $e) {}
-        } else {
-            return $this->instance;
+    public static function getInstance() {
+        if(!self::$instance) {            
+            self::$instance = new DbAdapter();        
         }
+        return self::$instance;        
     }
       
     function findByID($id, $table) {                
     }
     
     public function length($table) {
-        $tmp = self::fetch("SELECT COUNT(*) FROM". $table . ";");
-        return $tmp[0];
+        $tmp = self::fetch("SELECT COUNT(*) FROM ". $table . ";");
+        return "chuj";
     }
         
-    
+   
     public function fetch($sql) {        
-        $sth = $this->prepare($sql);
+        $sth = parent::prepare($sql);
         $sth->execute();
          
         $result = array();
