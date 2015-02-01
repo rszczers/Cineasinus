@@ -1,5 +1,7 @@
 <?php
-class MovieListView implements View {
+namespace views;
+
+class MovieListView implements \View {
     private $data;
     
     function __construct($data) {
@@ -16,7 +18,7 @@ class MovieListView implements View {
         echo "<th>Długość</th>";
         echo "</tr></thead>";
         echo "<tbody>";
-        foreach($data as $key => $movie) {
+        foreach($this->data as $key => $movie) {
             echo "<tr>";
             echo "<td>";
             echo $movie->getName();

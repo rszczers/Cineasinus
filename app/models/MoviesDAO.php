@@ -1,12 +1,12 @@
 <?php
-require_once '../app/models/Movie.php';
+namespace models;
 
 class MoviesDAO implements IMovieDAO {
     private $db;
     
     
     function __construct() {
-        $this->db = DbAdapter::getInstance();        
+        $this->db = \DbAdapter::getInstance();        
     }
     
     public function add($movie) {

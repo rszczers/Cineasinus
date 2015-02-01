@@ -1,5 +1,7 @@
 <?php
-class Movie implements Model {    
+namespace models;
+
+class Movie implements \Model {    
     private $name;
     private $category;
     private $duration;

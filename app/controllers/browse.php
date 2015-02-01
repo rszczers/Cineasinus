@@ -1,17 +1,21 @@
 <?php
-require_once '../app/models/IMovieDAO.php';
-require_once '../app/models/MoviesDAO.php';
-require_once '../app/models/Movie.php';
-require_once '../app/views/MovieListView.php';
-require_once '../app/views/MoviePreviewView.php';
-require_once '../app/core/View.php';
+namespace controllers;
+use models as models;
 
 
-class Browse extends Controller {
+//require_once '../app/models/IMovieDAO.php';
+//require_once '../app/models/MoviesDAO.php';
+
+//require_once '../app/views/MovieListView.php';
+//require_once '../app/views/MoviePreviewView.php';
+//require_once '../app/core/View.php';
+
+
+class Browse extends \Controller {
     private $mdao;
     
     function __construct() {
-        $this->mdao = new MoviesDAO();
+        $this->mdao = new models\MoviesDAO();
         parent::__construct();        
     }
     

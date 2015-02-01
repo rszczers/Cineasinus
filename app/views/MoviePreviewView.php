@@ -1,5 +1,7 @@
 <?php
-class MoviePreviewView implements View {
+namespace views;
+
+class MoviePreviewView implements \View {
     private $title;
     private $director;
     private $poster;

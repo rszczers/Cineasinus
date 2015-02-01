@@ -1,4 +1,5 @@
 <?php
+namespace models;
 Interface IMovieDAO {
 
     public function getViaName($arg);
