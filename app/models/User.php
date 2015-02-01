@@ -9,14 +9,14 @@ class User implements Model {
     private $phone;    
     
     function __construct($array) {
-        $this->id = $array[0];
-        $this->passhash = $array[1];
-        $this->email = $array[2];
-        $this->rank = $array[3];
-        $this->avatar = $array[4];
-        $this->first = $array[5];
-        $this->last = $array[6];
-        $this->phone = $array[7];        
+        $this->id = $array['id'];
+        $this->passhash = $array['passhash'];
+        $this->email = $array['email'];
+        $this->rank = $array['rank'];
+        $this->avatar = $array['avatar'];
+        $this->first = $array['first'];
+        $this->last = $array['last'];
+        $this->phone = $array['phone'];        
     }
     
     function getId() {

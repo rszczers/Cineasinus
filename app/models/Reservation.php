@@ -6,16 +6,12 @@ class Reservation implements Model {
     private $repertid;
     private $checked;
     
-    function __construct($id, $userid, $code, $repertid, $checked) {
-        $this->id = $id;
-        $this->userid = $userid;
-        $this->code = $code;
-        $this->repertid = $repertid;
-        $this->checked = $checked;
-    }
-    
-    public static function newReservation($array) {
-        return self::__construct($array[0], $array[1], $array[2], $array[4]);
+    function __construct($array) {
+        $this->id = $array['id'];
+        $this->userid = $array['userid'];
+        $this->code = $array['code'];
+        $this->repertid = $array['repertid'];
+        $this->checked = $array['checked'];
     }
     
     function setId($id) {

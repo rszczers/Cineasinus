@@ -7,18 +7,13 @@ class Repertoire implements Model {
     private $date;
     private $price;
     
-    function __construct($movieid, $id, $city, $cinemaname, $date, $price) {
-        $this->movieid = $movieid;
-        $this->id = $id;
-        $this->city = $city;
-        $this->cinemaname = $cinemaname;
-        $this->date = $date;
-        $this->price = $price;
-    }
-    
-    public static function newRepertoire($array) {
-        return self::__construct($array[0], $array[1], $array[2], $array[4], 
-            $array[5]);
+    function __construct($array) {
+        $this->movieid = $array['movieid'];
+        $this->id = $array['id'];
+        $this->city = $array['city'];
+        $this->cinemaname = $array['cinemaname'];
+        $this->date = $array['date'];
+        $this->price = $array['price'];
     }
     
     function getMovieid() {
