@@ -7,7 +7,7 @@ class MovieListView implements View {
         $this->show($data);
     }
     
-    public function show($data) {
+    public function show() {
         echo "<table class=\"table table-hover\">";
         echo "<thead><tr>";
         echo "<th>Nazwa filmu</th>";
