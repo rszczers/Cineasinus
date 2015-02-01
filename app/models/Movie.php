@@ -45,6 +45,23 @@ class Movie implements Model {
         return $this->description;
     }
     
+    function getShortDescription() {
+        $tmp = $this->description;
+        $l = 160;
+        if (strlen($tmp) > $l) {
+            $tmp = substr($tmp, 0, strpos($tmp, ' ', $l));
+            if($tmp[strlen($tmp)-1] == '.' || $tmp[strlen($tmp)-1] == ',' ||
+                $tmp[strlen($tmp)-1] == ':' || $tmp[strlen($tmp)-1] == '!') {
+                $tmp = substr($tmp, 0, $l-1);               
+            }
+            $tmp = $tmp . "…";
+        }        
+        
+                      
+        return $tmp;
+        // return substr(, 0, 100);
+    }
+    
     function getPlpremiere() {
         return $this->plpremiere;
     }

@@ -14,7 +14,10 @@ class MoviePreviewView implements View {
             . "</small></br>"    
             . "</h3>";
         echo "<img style=\"max-height:250px\" src=" . $data->getPoster() 
-            . " class=\"img-responsive\">";
+            . " class=\"img-responsive previewImg\">";
+        echo "<p>" . $data->getShortDescription() . 
+                " <a href=\"./Film/" . $data->getId() .  "\"\>(więcej)</a>" .
+                "</p>";
         echo "</div>";
     }
 }
