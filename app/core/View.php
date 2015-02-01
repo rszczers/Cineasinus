@@ -12,5 +12,5 @@
  * @author rszczers
  */
 interface View {
-    public function show();
+    public function show($arg);
 }

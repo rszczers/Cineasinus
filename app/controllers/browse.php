@@ -2,24 +2,29 @@
 require_once '../app/models/IMovieDAO.php';
 require_once '../app/models/MoviesDAO.php';
 require_once '../app/models/Movie.php';
+require_once '../app/views/MovieListView.php';
+require_once '../app/views/MoviePreviewView.php';
+require_once '../app/core/View.php';
 
 
 class Browse extends Controller {
+    private $mdao;
     
     function __construct() {
-        parent::__construct();
+        $this->mdao = new MoviesDAO();
+        parent::__construct();        
     }
     
     public function index() {        
-        $this->view('browse/index', "title", array());
+        $data = $this->mdao->populateRaw();
+        $this->view('browse/index', "Przeglądaj filmy", array('page' => $page, 'data' => $data));        
         
-        $moviedao = new MoviesDAO();
-        print_r($moviedao->populate());        
+        
     }  
     
     public function book($id) {
     }
+  
     
 }
-
-
+  

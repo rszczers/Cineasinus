@@ -30,6 +30,7 @@ class App {
                 unset($url[1]);
             }
         }
+                
         
         //following line ommits php warning if $url is null
         $this->params = $url ? array_values($url) : array();        

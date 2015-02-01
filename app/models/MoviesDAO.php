@@ -4,8 +4,9 @@ require_once '../app/models/Movie.php';
 class MoviesDAO implements IMovieDAO {
     private $db;
     
+    
     function __construct() {
-        $this->db = DbAdapter::getInstance();
+        $this->db = DbAdapter::getInstance();        
     }
     
     public function add($movie) {
@@ -16,7 +17,7 @@ class MoviesDAO implements IMovieDAO {
     public function edit($movie) {
         $sql = $this->sqlUpdate($movie);
         $this->db->execQuery($sql);
-    }
+    }        
 
     public function getPlPremiere($string) {
         
@@ -53,8 +54,23 @@ class MoviesDAO implements IMovieDAO {
     public function getViaName($arg) {
         
     }
-
+    
     public function populate() {
+        $this->populateMovies();
+    }
+    
+    public function populateRaw() {
+        $sql = "SELECT * FROM `movies`";
+        $tmp = $this->db->execQuery($sql);
+        
+        $result = array();
+        foreach($tmp as $key => $row) {                        
+            $result[] = $row;
+        }
+        return $result;
+    }
+
+    public function populateMovies() {
         $sql = "SELECT * FROM `movies`";
         $tmp = $this->db->execQuery($sql);
         
@@ -63,6 +79,30 @@ class MoviesDAO implements IMovieDAO {
             $result[] = new Movie($row);
         }
         return $result;
+    }
+    
+    public function getLastMovies($n) {
+        $sql = "select * from ( select * from `movies` order by id desc "
+                . "limit " . $n ." ) sub order by id asc";
+        $tmp = $this->db->execQuery($sql);
+        
+        $result = array();
+        foreach($tmp as $key => $row) {                        
+            $result[] = new Movie($row);
+        }
+        return $result;        
+    }
+    
+    public function getFirstMovies($n) {
+        $sql = "select * from `movies` order by id desc "
+                . "limit " . $n;
+        $tmp = $this->db->execQuery($sql);
+        
+        $result = array();
+        foreach($tmp as $key => $row) {                        
+            $result[] = new Movie($row);
+        }
+        return $result; 
     }
 
     public function remove($movie) {
