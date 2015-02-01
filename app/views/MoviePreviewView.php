@@ -30,4 +30,24 @@ class MoviePreviewView implements View {
         echo "</div>";
     }
 
+    function setTitle($title) {
+        $this->title = $title;
+    }
+
+    function setDirector($director) {
+        $this->director = $director;
+    }
+
+    function setPoster($poster) {
+        $this->poster = $poster;
+    }
+
+    function setDescription($description) {
+        $this->description = $description;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
 }
