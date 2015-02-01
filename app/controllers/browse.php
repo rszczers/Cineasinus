@@ -16,7 +16,7 @@ class Browse extends Controller {
     }
     
     public function index() {        
-        $data = $this->mdao->populateRaw();
+        $data = $this->mdao->populateMovies();
         $this->view('browse/index', "Przeglądaj filmy", array('page' => $page, 'data' => $data));        
         
         

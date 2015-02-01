@@ -14,21 +14,21 @@ class MovieListView implements View {
         echo "<th>Kategoria</th>";
         echo "<th>Reżyser</th>";
         echo "<th>Długość</th>";
-        echo "</thead></tr>";
+        echo "</tr></thead>";
         echo "<tbody>";
-        foreach($data as $key => $row) {
+        foreach($data as $key => $movie) {
             echo "<tr>";
             echo "<td>";
-            echo $row['name'];
+            echo $movie->getName();
             echo "</td>";
             echo "<td>";
-            echo $row['category'];
+            echo $movie->getCategory();
             echo "</td>";
             echo "<td>";
-            echo $row['director'];
+            echo $movie->getDirector();
             echo "</td>";
             echo "<td>";
-            echo $row['duration'] . "min";
+            echo $movie->getDuration() . "min";
             echo "</td>";
             echo "</tr>";
         }

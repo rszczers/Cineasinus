@@ -9,11 +9,11 @@ class MoviePreviewView implements View {
     
     public function show($data) {
         echo "<div class=\"col-md-4\">";
-        echo "<h3>" . $data['name']
-            . "<br><small>" . $data['director'] 
+        echo "<h3>" . $data->getName() 
+            . "<br><small>" . $data->getDirector() 
             . "</small></br>"    
             . "</h3>";
-        echo "<img src=" . $data['poster']
+        echo "<img style=\"max-height:250px\" src=" . $data->getPoster() 
             . " class=\"img-responsive\">";
         echo "</div>";
     }
