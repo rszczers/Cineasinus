@@ -75,7 +75,21 @@
     <div class="col-sm-10">
      <textarea class="form-control" rows="3"></textarea>
     </div>
-</div><br>
+</div>
+    <div class="form-group">
+    <label for="prepierePL" class="col-sm-2 control-label">Plakat</label>
+    <div class="col-sm-10">
+            <div class="input-group">
+             <input type="text" class="form-control" readonly>
+                <span class="input-group-btn">
+                    <span class="btn btn-default btn-file">
+                        Przeglądaj
+                    </span>
+                </span>
+               </div>
+     </div>
+     </div>
+<br>
 <hr>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
