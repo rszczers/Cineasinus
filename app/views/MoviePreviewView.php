@@ -1,6 +1,4 @@
 <?php
-namespace views;
-
 class MoviePreviewView implements \View {
     private $title;
     private $director;
@@ -27,7 +25,7 @@ class MoviePreviewView implements \View {
             . " class=\"img-responsive previewImg\">";
         echo "<p>" . $this->description . 
                 " <a href=\"http://" . App::ABS_PATH
-                . "Film/" . $this->id .  "\"\>(więcej)</a>" .
+                . "film/" . $this->id .  "\"\>(więcej)</a>" .
                 "</p>";
         echo "</div>";
     }

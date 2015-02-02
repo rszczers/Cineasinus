@@ -22,7 +22,7 @@ class App {
         require_once '../app/controllers/' . $this->controller . '.php';
         
         //create new instance of $this->controller;
-        $this->controller = "controllers\\"  . $this->controller;
+        // $this->controller = "controllers\\"  . $this->controller;
         $this->controller = new $this->controller;
                 
         //set $url[1] as method to execute, if exists.

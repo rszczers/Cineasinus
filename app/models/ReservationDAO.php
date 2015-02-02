@@ -1,9 +1,5 @@
 <?php
-/**
- * Description of ReservationDAO
- *
- * @author rszczers
- */
+require_once '../app/models/Reservation.php';
 class ReservationDAO implements IReservationDAO {
     private $db;
     

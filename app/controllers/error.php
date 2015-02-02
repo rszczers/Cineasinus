@@ -1,5 +1,5 @@
 <?php
-
+namespace app\controllers;
 class Error extends Controller {
 
     public function index($depth) {

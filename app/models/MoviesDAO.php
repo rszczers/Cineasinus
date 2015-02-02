@@ -1,6 +1,5 @@
 <?php
-namespace models;
-
+require_once '../app/models/Movie.php';
 class MoviesDAO implements IMovieDAO {
     private $db;
     

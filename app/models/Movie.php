@@ -1,6 +1,4 @@
 <?php
-namespace models;
-
 class Movie implements \Model {    
     private $name;
     private $category;

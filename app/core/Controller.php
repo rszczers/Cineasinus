@@ -1,6 +1,5 @@
 <?php
 
-require_once '../app/core/DbAdapter.php';
 
 /**
  * Controller superclass; mediates data between models and views

@@ -1,16 +1,20 @@
 <?php
+require_once '../app/models/IMovieDAO.php';
+require_once '../app/models/MoviesDAO.php';
+require_once '../app/views/MovieListView.php';
+require_once '../app/views/MoviePreviewView.php';
+require_once '../app/core/View.php';
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Film
- *
- * @author rszczers
- */
 class Film extends Controller {
-    //put your code here
+    private $mdao;
+    
+    function __construct() {
+        $this->mdao = new MoviesDAO();
+        parent::__construct();        
+    }
+    
+    public function index() {        
+        $data = $this->mdao->populateMovies();
+        $this->view('film/index', "Przeglądaj filmy", array('page' => $page, 'data' => $data));                        
+    }   
 }

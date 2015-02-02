@@ -1,6 +1,4 @@
 <?php
-namespace views;
-
 class MovieListView implements \View {
     private $data;
     
