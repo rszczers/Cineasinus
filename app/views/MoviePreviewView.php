@@ -1,5 +1,5 @@
 <?php
-class MoviePreviewView implements \View {
+class MoviePreviewView implements View {
     private $title;
     private $director;
     private $poster;
@@ -21,11 +21,13 @@ class MoviePreviewView implements \View {
             . "<br><small>" . $this->director
             . "</small></br>"    
             . "</h3>";
-        echo "<img style=\"max-height:250px\" src=http://" . App::ABS_PATH . $this->poster 
-            . " class=\"img-responsive previewImg\">";
+        echo "<a href=\"http://" . App::ABS_PATH
+                . "film/details/" . $this->id .  "\">"
+        . "<img style=\"max-height:250px\" src=http://" . App::ABS_PATH . $this->poster 
+            . " class=\"img-responsive previewImg\"></a>";
         echo "<p>" . $this->description . 
                 " <a href=\"http://" . App::ABS_PATH
-                . "film/" . $this->id .  "\"\>(więcej)</a>" .
+                . "film/details/" . $this->id .  "\">(więcej)</a>" .
                 "</p>";
         echo "</div>";
     }

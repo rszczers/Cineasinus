@@ -18,6 +18,7 @@ class Movie implements \Model {
         $this->description = $array['description'];
         $this->plpremiere = $array['plpremiere'];
         $this->id = $array['id'];
+        $this->fpremiere = $array['fpremiere'];
         $this->poster = $array['poster'];    
     }        
     
@@ -62,11 +63,11 @@ class Movie implements \Model {
         // return substr(, 0, 100);
     }
     
-    function getPlpremiere() {
+    function getPlPremiere() {
         return $this->plpremiere;
     }
 
-    function getFpremiere() {
+    function getFPremiere() {
         return $this->fpremiere;
     }
 

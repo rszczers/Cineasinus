@@ -29,6 +29,16 @@ class MoviesDAO implements IMovieDAO {
     public function getViaCategory($string) {
         
     }
+    
+    public function getCategories() {
+        $sql = "select category form `movies`";
+        $tmp = array();       
+        $querry = $this->db->execQuery($sql);
+        foreach($querry as $key => $value) {
+            $tmp[] = $value['category'];
+        }
+        return $tmp;
+    }   
 
     public function getViaDescription($string) {
         
@@ -147,6 +157,11 @@ class MoviesDAO implements IMovieDAO {
                "where 'id' = " . $movie->getId();
         return $sql;
     }
-
+    
+    public function findById($id) {
+        $sql = "select * from `movies` where id=" . $id;
+        $array = $this->db->execQuery($sql);
+        return new Movie($array[0]);
+    }
     
 }

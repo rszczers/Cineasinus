@@ -1,5 +1,5 @@
 <?php
-class MovieListView implements \View {
+class MovieListView implements View {
     private $data;
     
     function __construct($data) {
