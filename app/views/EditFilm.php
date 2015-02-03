@@ -7,7 +7,7 @@ class EditFilm implements View{
         $this->show($data);
     }
     
-    public function show($data) {
+    public function show() {
         echo "Czy działa?";
   echo "<div class=\"container\"> 
         <form class=\"form-horizontal\">
@@ -16,7 +16,7 @@ class EditFilm implements View{
         <label for=\"title\" class=\"col-sm-2 control-label\">Tytuł</label>
         <div class=\"col-sm-10\">
         <input type=\"text\" class=\"form-control\" id=\"title\" placeholder=\" ";
-  echo $data->getName();
+  echo $this->getName();
   echo "\">
         </div></div>
   
@@ -24,7 +24,7 @@ class EditFilm implements View{
         <label for=\"director\" class=\"col-sm-2 control-label\">Reżyseria</label>
         <div class=\"col-sm-10\">
         <input type=\"text\" class=\"form-control\" id=\"director\" placeholder=\" ";
-  echo $data->getDirector();
+  echo $this->getDirector();
   echo "\">
         </div>
         </div>
@@ -61,7 +61,7 @@ class EditFilm implements View{
     <label class=\"col-sm-2 control-label\">Opis</label>
     <div class=\"col-sm-10\">
     <textarea class=\"form-control\" rows=\"3\" placeholder=\" ";
-echo $data->getDescription();     
+echo $this->getDescription();     
 echo "\"></textarea>
     </div>
 </div>
