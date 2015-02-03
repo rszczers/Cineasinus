@@ -4,7 +4,7 @@
  */
 
 class App {
-    const ABS_PATH = "rszczers.abraham.linuxpl.info/AI/Jez/Cineasinus/public/";
+    const ABS_PATH = "rszczers.abraham.linuxpl.info/AI/Cineasinus/public/";
     
     //default conditions
     protected $controller = 'home';    
@@ -12,6 +12,9 @@ class App {
     protected $params = array();
             
     function __construct() {
+        require_once '../app/core/Session.php';
+        Session::init();        
+        
         $url = $this->parseUrl();                       
         //If there exsist such controller as the first argument, then
         //pop it and make such; else – make default home controller (home/index)     

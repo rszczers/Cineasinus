@@ -20,4 +20,8 @@
             <?php new MoviePreviewView($data['data'][5]); ?>
             
         </div>
+
+    
+     
+
     <?php require '../app/views/footer.php' ?>

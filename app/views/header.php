@@ -37,7 +37,7 @@
               <input type="text" placeholder="Email" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password" placeholder="Hasło" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">Zaloguj się</button>
           </form>

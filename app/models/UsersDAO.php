@@ -4,7 +4,7 @@ class UsersDAO implements IUserDAO{
     private $db;
     
     function __construct() {
-        $this->db = new DbAdapter();
+        $this->db = \DbAdapter::getInstance();        
     }
     
     public function add($user) {
@@ -86,6 +86,7 @@ class UsersDAO implements IUserDAO{
             "'id' = " . $user->getId();
         return sql;
     }
+    
     public function sqlUpdate($user) {
         $sql = "update `users`" .
                "set passhash = '" . $user->getPasshash() . "'," .
@@ -107,6 +108,24 @@ class UsersDAO implements IUserDAO{
             $result[] = new User($row);
         }
         return $result;
+    }
+    
+  /**
+     * This method is a junk, sorry.
+     * @param type $email
+     * @param type $hash
+     * @return \User
+     */
+    public function findByLoginAndPass($email, $hash) {
+        $sql = "SELECT * FROM `users` WHERE email='" . $email . 
+                "' AND passhash='" . $hash . "'";
+        
+        $array = $this->db->execQuery($sql);
+        
+        if(!is_null($array[0]['id'])) {
+            return new User($array[0]);
+        }
+        return null;
     }
 
 }
