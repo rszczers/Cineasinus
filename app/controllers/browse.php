@@ -6,7 +6,6 @@ require_once '../app/views/MovieListView.php';
 require_once '../app/views/MoviePreviewView.php';
 require_once '../app/core/View.php';
 
-
 class Browse extends Controller {
     private $mdao;
     

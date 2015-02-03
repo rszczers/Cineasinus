@@ -3,6 +3,7 @@ require_once '../app/models/IMovieDAO.php';
 require_once '../app/models/MoviesDAO.php';
 require_once '../app/views/MovieListView.php';
 require_once '../app/views/MoviePreviewView.php';
+require_once '../app/views/EditFilm.php';
 require_once '../app/core/View.php';
 require_once '../app/controllers/ControllerHelper.php';
 

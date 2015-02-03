@@ -5,8 +5,7 @@
 </div>
     <div class="jumbotron">
         <div class="container">
-            
-            
+           
                  <?php new MoviePreviewView($data['data'][0]); ?>
                  <?php new MoviePreviewView($data['data'][1]); ?>
                  <?php new MoviePreviewView($data['data'][2]); ?>
@@ -18,7 +17,8 @@
     </div>
           <div class="container">
         <?php 
-            new MovieListView($data['data']);        
+            new MovieListView($data['data']);  
+            
         ?>
       
     

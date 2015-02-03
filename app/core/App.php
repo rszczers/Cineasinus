@@ -4,7 +4,7 @@
  */
 
 class App {
-    const ABS_PATH = "rszczers.abraham.linuxpl.info/AI/Cineasinus/public/";
+    const ABS_PATH = "rszczers.abraham.linuxpl.info/AI/Jez/Cineasinus/public/";
     
     //default conditions
     protected $controller = 'home';    
