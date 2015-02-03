@@ -2,16 +2,14 @@
 class Repertoire implements Model {
     private $movieid;    
     private $id;
-    private $city;
-    private $cinemaname;
+    private $city;    
     private $date;
     private $price;
     
     function __construct($array) {
         $this->movieid = $array['movieid'];
         $this->id = $array['id'];
-        $this->city = $array['city'];
-        $this->cinemaname = $array['cinemaname'];
+        $this->city = $array['city'];        
         $this->date = $array['date'];
         $this->price = $array['price'];
     }
@@ -27,10 +25,7 @@ class Repertoire implements Model {
     function getCity() {
         return $this->city;
     }
-
-    function getCinemaname() {
-        return $this->cinemaname;
-    }
+    
 
     function getDate() {
         return $this->date;

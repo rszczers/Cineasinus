@@ -1,4 +1,5 @@
 <?php
+
 class DbAdapter extends PDO {
     
     private static $instance = false; 

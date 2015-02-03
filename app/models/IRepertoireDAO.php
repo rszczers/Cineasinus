@@ -1,5 +1,4 @@
 <?php
-
 interface IRepertoireDAO {    
     public function getViaMovieId($arg);
     public function getViaId($arg);

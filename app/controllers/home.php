@@ -1,7 +1,6 @@
 <?php
 require_once '../app/models/IMovieDAO.php';
 require_once '../app/models/MoviesDAO.php';
-require_once '../app/models/Movie.php';
 require_once '../app/views/MovieListView.php';
 require_once '../app/views/MoviePreviewView.php';
 require_once '../app/views/EditFilm.php';
@@ -19,7 +18,5 @@ class Home extends Controller {
     public function index() {         
         $data = $this->mdao->populateMovies();
         $this->view('home/index', "Cineasinus", array('page' => $page, 'data' => $data));  
-    }
-        
-    
+    }        
 }

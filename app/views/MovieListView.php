@@ -7,7 +7,7 @@ class MovieListView implements View {
         $this->show($data);
     }
     
-    public function show($data) {
+    public function show() {
         echo "<table class=\"table table-hover\">";
         echo "<thead><tr>";
         echo "<th>Nazwa filmu</th>";
@@ -16,7 +16,7 @@ class MovieListView implements View {
         echo "<th>Długość</th>";
         echo "</tr></thead>";
         echo "<tbody>";
-        foreach($data as $key => $movie) {
+        foreach($this->data as $key => $movie) {
             echo "<tr>";
             echo "<td>";
             echo $movie->getName();
