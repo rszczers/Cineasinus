@@ -164,4 +164,9 @@ class MoviesDAO implements IMovieDAO {
         return new Movie($array[0]);
     }
     
+    public function count() {
+        $sql = "select count(id) from `movies`";
+        $array = $this->db->execQuery($sql);
+        return $array[0]['count(id)'];
+    }   
 }

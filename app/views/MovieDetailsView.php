@@ -16,8 +16,8 @@ class MovieDetailsView implements View {
         $this->category = $movie->getCategory();
         $this->duration = $movie->getDuration();        
         $this->plot = $movie->getDescription();
-        $this->plpremiere = $movie->getPlPremiere();
-        $this->fpremiere = $movie->getFPremiere();
+        $this->plpremiere = $this->parsePremiere($movie->getPlPremiere());
+        $this->fpremiere = $this->parsePremiere($movie->getFPremiere());
         $this->show();
     }
 
@@ -26,7 +26,7 @@ class MovieDetailsView implements View {
         . " <img class=\"img-responsive\" src=\"http://" . APP::ABS_PATH . $this->poster ."\">"                          
         . "</div>" 
         . "<div class=\"col-md-8\">" 
-        . "<h1>". $this->title ."<br><small>" . $this->getYear() . "</small></br></h1>"                
+        . "<h1>". $this->title ."<br><h3>" . $this->getYear() . "</h3></br>"                
         . "<p>" . $this->plot . "</p>"
         . "<br>reżyseria: " . $this->director . "</br>"
         . "<br>gatunek: " . $this->category . "</br>"
@@ -36,7 +36,12 @@ class MovieDetailsView implements View {
     
     private function getYear() {
         $tmp = explode("-", $this->fpremiere);
-        return $tmp[0];
+        return $tmp[2];
+    }
+    
+    private function parsePremiere($arg) {
+        $tmp = date_parse($arg);
+        return $tmp['day'] . "-" . $tmp['month'] ."-". $tmp['year'];
     }
 }
 

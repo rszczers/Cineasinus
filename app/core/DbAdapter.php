@@ -35,7 +35,6 @@ class DbAdapter extends PDO {
    
     public function execQuery($sql) {        
         $sth = parent::prepare($sql);
-
         $sth->execute();
          
         $result = array();
