@@ -24,7 +24,7 @@ class Account extends Controller {
     
     public function register() {
         if(isset($_SESSION['userdata']))
-            $this->view('account/error', "Rejestracja – Błąd", 'alreadyLogged');
+            $this->view('account/error', "Rejestracja – Błąd", 'Jesteś już zalogowany');
         else {
             $first = filter_input(INPUT_POST, 'first', FILTER_SANITIZE_STRING);
             $last = filter_input(INPUT_POST, 'last', FILTER_SANITIZE_STRING);
@@ -49,20 +49,24 @@ class Account extends Controller {
                             'passhash' => $hash,
                             'id' => 0
                         );
-                        $newUser = new User($array);                        
-                        $newId = $this->udao->add($newUser);
-
-                        $newUser->setId($newId);                        
+                        $newUser = new User($array);
                         
-                        $hash = ControllerHelper::userhash();
-                        
-                        // here activation data is being sent to database
-                        $this->udao->toActivate($newUser->getId(), $hash);
-                                
-                        $msg = $this->generateWelcome($newUser, $hash);
-                        ControllerHelper::sendmail($email, "Potwierdzenie rejestracji", $msg);                       
-                        $this->view('account/registered', "Rejestracja", "Success");
+                        if(is_null($this->udao->findByLoginAndPass($email, $hash))) {
+                            $newId = $this->udao->add($newUser);
 
+                            $newUser->setId($newId);                        
+
+                            $hash = ControllerHelper::userhash();
+
+                            // here activation data is being sent to database
+                            $this->udao->toActivate($newUser->getId(), $hash);
+
+                            $msg = $this->generateWelcome($newUser, $hash);
+                            ControllerHelper::sendmail($email, "Potwierdzenie rejestracji", $msg);                       
+                            $this->view('account/registered', "Rejestracja", "Success");
+                        } else {
+                            $this->view('account/error', "Rejestracja", "Twoje konto już istnieje w bazie danych.");
+                        }
                     } else {
                         $this->view('account/error', "Rejestracja", "Podane hasła różnią się.");
                     }

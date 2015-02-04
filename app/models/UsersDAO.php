@@ -27,7 +27,11 @@ class UsersDAO implements IUserDAO{
     public function chRole($user, $role) {
         $user->setRank($role);
         $sql = $this->sqlUpdate($user);
-        $this->db->execQuery($sql);
+        try {
+            $this->db->execQuery($sql);
+        } catch (Exception $ex) {
+
+        }
     }
 
     public function delete($user) {

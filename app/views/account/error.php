@@ -1,7 +1,9 @@
 <?php require '../app/views/header.php' ?>
 <div class="jumbotron">
-<?php echo $data ?>
     <div class ="container">
+        <div class="col-md-6">
+        <mark><?php echo $data ?></mark>
+        </div>
             <div class="col-md-6">
                 <h3 class="dark-grey">Rejestracja</h3>
                 <form method="POST" action="<?php echo "http://" . App::ABS_PATH . "account/register" ?>">

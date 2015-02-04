@@ -1,5 +1,9 @@
 <?php require '../app/views/header.php' ?>
 <div class="jumbotron">
+    <div class ="container">
+<!--        <div class="col-md-6">
+        <mark><?php echo $data ?></mark>
+        </div>-->
             <div class="col-md-6">
                 <h3 class="dark-grey">Rejestracja</h3>
                 <form method="POST" action="<?php echo "http://" . App::ABS_PATH . "account/register" ?>">
@@ -32,6 +36,7 @@
             <input type="hidden" name="tried" value="1">
             <button type="submit" class="btn btn-primary">Rejestruj</button>
             </form>
+    </div>
 </div>
 <div class="container">
 <?php require '../app/views/footer.php' ?>
