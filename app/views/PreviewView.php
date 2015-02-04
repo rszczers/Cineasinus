@@ -16,7 +16,7 @@ class PreviewListView implements View {
             if($key%3 == 0) {
                 echo "<div class=\"row\">";
             }
-            new MoviePreviewView($movie)
+            new MoviePreviewView($movie);
             if($key%3 == 0) {
                 echo "</div>";
             }

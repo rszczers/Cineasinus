@@ -8,7 +8,8 @@
     </div>
 </div>
 <div class="container">    
-    <h2>Polecamy</h2>    
+    <h2>Polecamy</h2> 
+
         <div class="row">
             <?php new MoviePreviewView($data['data'][0]); ?>
             <?php new MoviePreviewView($data['data'][1]); ?>
@@ -18,6 +19,6 @@
             <?php new MoviePreviewView($data['data'][3]); ?>
             <?php new MoviePreviewView($data['data'][4]); ?>
             <?php new MoviePreviewView($data['data'][5]); ?>
-            
-        </div>
+           
+        </div> 
     <?php require '../app/views/footer.php' ?>
