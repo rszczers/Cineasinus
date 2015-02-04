@@ -15,7 +15,7 @@ class Log extends Controller {
      */
     public function index() {
         //check if logged
-        $this->view('user/index', "Logowanie", null);        
+        $this->view('account/index', "Logowanie", null);        
     }
    /**
      * userin
@@ -25,25 +25,25 @@ class Log extends Controller {
             $auth = $this->verify();
             if(!is_null($auth)) {
                 Session::set('userdata', $auth);
-                $this->view('user/login', "Logowanie – zalogowany", array());
+                $this->view('account/login', "Logowanie – zalogowany", array());
             } else {
-                $this->view('user/login', "Logowanie – niepowodzenie", array());
+                $this->view('account/login', "Logowanie – niepowodzenie", array());
             }
         } else {
-            $this->view('user/login', "logowanie", null);        
+            $this->view('account/login', "logowanie", null);        
         }
     }
     /**
      * userout
      */
     public function out() {        
-        $this->view('user/logout', "Do zobaczenia!", null);
+        $this->view('account/logout', "Do zobaczenia!", null);
         Session::destroy();
     }
     
     public function register() {
         //here check if user already tried to register
-        $this->view('user/register', "Rejestracja", array('argument'));
+        $this->view('account/register', "Rejestracja", array('argument'));
     }
     
     /**

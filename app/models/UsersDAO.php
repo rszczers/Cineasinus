@@ -13,7 +13,6 @@ class UsersDAO implements IUserDAO{
             $this->db->execQuery($sql);
             }
         catch (Exception $e) {}
-        
             $sql = "SELECT * FROM users WHERE first = '" . $user->getFirst() .
                 "' AND last = '" . $user->getLast() . "' AND email = '" . $user->getEmail().
                 "' AND phone = '" . $user->getPhone() . "';";
@@ -167,9 +166,7 @@ class UsersDAO implements IUserDAO{
         $sql = "insert into `activation` (`userid`, `hash`) values ("
                 . "'" . $userid . "', '" . $hash . "');";
         $this->db->execQuery($sql);
-        } catch (Exception $e) {
-            
-        }
+        } catch (Exception $e) {}
     }
     
     public function activateByHash($hash) {

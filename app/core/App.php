@@ -36,7 +36,6 @@ class App {
             }
         }
                 
-        
         //following line ommits php warning if $url is null
         $this->params = $url ? array_values($url) : array();        
 
