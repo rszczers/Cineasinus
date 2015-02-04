@@ -1,10 +1,15 @@
 <?php
 class MakeReservationView implements View{
-   private $data;
-    
+    private $first;
+    private $last;
+    private $email;
+    private $phone;
+    private $movie;
+    private $time;
+   
     function __construct($data) {
         $this->data = $data;
-        $this->show($data);
+        $this->show();
     }
     
     public function show() {
@@ -76,5 +81,31 @@ class MakeReservationView implements View{
 </form>
 </div>";
 }
+
+
+function setFirst($first) {
+    $this->first = $first;
+}
+
+function setLast($last) {
+    $this->last = $last;
+}
+
+function setEmail($email) {
+    $this->email = $email;
+}
+
+function setPhone($phone) {
+    $this->phone = $phone;
+}
+
+function setMovie($movie) {
+    $this->movie = $movie;
+}
+
+function setTime($time) {
+    $this->time = $time;
+}
+
 
 }

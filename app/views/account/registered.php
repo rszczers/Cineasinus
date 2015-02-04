@@ -3,7 +3,7 @@
     <div class="container">
     <h2>Sukces!</h2>
     
-    <br><?php echo $data ?></br>
+    <br><?php echo $data['content'] ?></br>
         
     <p>Odbierz pocztę i kliknij link aktywacyjny, aby aktywować swoje konto</p>
     </div>

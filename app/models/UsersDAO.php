@@ -141,9 +141,7 @@ class UsersDAO implements IUserDAO{
     public function findByLoginAndPass($email, $hash) {
         $sql = "SELECT * FROM `users` WHERE email='" . $email . 
                 "' AND passhash='" . $hash . "'";
-        
         $array = $this->db->execQuery($sql);
-        
         if(!is_null($array[0]['id'])) {
             return new User($array[0]);
         }

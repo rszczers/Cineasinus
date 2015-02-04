@@ -1,4 +1,4 @@
-<?php
+s<?php
 require_once '../app/models/IMovieDAO.php';
 require_once '../app/models/MoviesDAO.php';
 

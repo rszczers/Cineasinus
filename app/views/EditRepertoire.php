@@ -1,14 +1,13 @@
 <?php
 class EditRepertoire implements View{
-   private $data;
+    private $movies;
     
     function __construct($data) {
-        $this->data = $data;
-        $this->show($data);
+        $this->movies = $data;
+        $this->show();
     }
     
     public function show() {
-    
         echo "<div class=\"container\">
        
         <form class=\"form-inline\">

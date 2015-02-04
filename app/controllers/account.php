@@ -29,15 +29,15 @@ class Account extends Controller {
             $first = filter_input(INPUT_POST, 'first', FILTER_SANITIZE_STRING);
             $last = filter_input(INPUT_POST, 'last', FILTER_SANITIZE_STRING);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
-            $emailCheck = filter_input(INPUT_POST, 'emailcheck', FILTER_SANITIZE_STRING);
-            $hash = sha1(filter_input(INPUT_POST, 'hash', FILTER_SANITIZE_STRING));
+            $passCheck = filter_input(INPUT_POST, 'passcheck', FILTER_SANITIZE_STRING);
+            $pass = sha1(filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING));
             $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);            
             if(!is_null($first) && 
                     !is_null($last) && 
                     !is_null($email) && 
-                    !is_null($hash) && 
+                    !is_null($pass) && 
                     !is_null($phone)) {
-                    if(strcmp($email, $emailCheck)) {
+                    if(strcmp($pass, $passCheck)) {
                         /**
                                             *  Here goes part where new user is added to database
                                             */                                     
@@ -46,12 +46,12 @@ class Account extends Controller {
                             'first' => $first,
                             'last' => $last,
                             'phone' => $phone,
-                            'passhash' => $hash,
+                            'passhash' => $pass,
                             'id' => 0
                         );
                         $newUser = new User($array);
                         
-                        if(is_null($this->udao->findByLoginAndPass($email, $hash))) {
+                        if(is_null($this->udao->findByLoginAndPass($email, $pass))) {
                             $newId = $this->udao->add($newUser);
 
                             $newUser->setId($newId);                        
@@ -59,26 +59,26 @@ class Account extends Controller {
                             $hash = ControllerHelper::userhash();
 
                             // here activation data is being sent to database
-                            $this->udao->toActivate($newUser->getId(), $hash);
+                            $this->udao->toActivate($newUser->getId(), $pass);
 
-                            $msg = $this->generateWelcome($newUser, $hash);
-                            ControllerHelper::sendmail($email, "Potwierdzenie rejestracji", $msg);                       
-                            $this->view('account/registered', "Rejestracja", "Rejestracja przebiegła pomyślnie");
+                            $msg = $this->generateWelcome($newUser, $pass);
+                            ControllerHelper::sendmail($email, "Cineasinus – potwierdzenie rejestracji", $msg);                       
+                            $this->view('account/registered', "Rejestracja", array('content' => "Rejestracja przebiegła pomyślnie"));
                         } else {
-                            $this->view('account/error', "Rejestracja", "Twoje konto już istnieje w bazie danych.");
+                            $this->view('account/error', "Rejestracja", array('content' => "Twoje konto już istnieje w bazie danych."));
                         }
                     } else {
-                        $this->view('account/error', "Rejestracja", "Podane hasła różnią się.");
+                        $this->view('account/error', "Rejestracja", array('content' => "Podane hasła różnią się."));
                     }
             } else {
-                $this->view('account/error', "Rejestracja", "Nie wypełniono wszystkich pól");
+                $this->view('account/error', "Rejestracja", array('content' => "Nie wypełniono wszystkich pól"));
             }
         }
     }
     
     public function activate($hash) {
         $this->udao->activateByHash($hash);
-        $this->view('account/registered', "Rejestracja", "Aktywacja przebiegła pomyślnie");
+        $this->view('account/registered', "Rejestracja", array('content' => "Aktywacja przebiegła pomyślnie"));
     }
     
     

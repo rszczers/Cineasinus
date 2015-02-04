@@ -30,7 +30,7 @@ class MovieDetailsView implements View {
         . "<p>" . $this->plot . "</p>"
         . "<br>reżyseria: " . $this->director . "</br>"
         . "<br>gatunek: " . $this->category . "</br>"
-        . "<br>premiera:  $this->plpremiere (Polska), $this->fpremiere (Świat)</br>"
+        . "<br>premiera:  $this->plpremiere (Polska), $this->fpremiere (Świat)</br>"        
     . "</div>";
     }
     

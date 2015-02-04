@@ -19,6 +19,6 @@ class Film extends Controller {
         
     public function details($arg) {                
         $movie = $this->mdao->findById($arg);
-        $this->view('film/index', "O filmie", $movie);                        
+        $this->view('film/index', "O filmie", array('content' => $movie));                        
     }   
 }

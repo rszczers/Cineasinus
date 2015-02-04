@@ -22,36 +22,44 @@ class Log extends Controller {
      */
     public function in() {
         if(isset($_POST['email']) && isset($_POST['pass'])) {
-            $auth = $this->verify();
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);                
+            $hash = sha1(filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING));
+            unset($_POST['email']);
+            unset($_POST['pass']);
+            
+            Session::set('email', $email);
+            Session::set('hash', $hash);
+            
+            $auth = $this->verify($email, $hash);            
             if(!is_null($auth)) {
                 Session::set('userdata', $auth);
-                $this->view('account/login', "Logowanie – zalogowany", array());
+                // $url = "http:\\" . App::ABS_PATH;                
+                $url = "..";
+                $this->view('redirect', "Logowanie…", array('heading' => 'Trwa logowanie…', 'url'=>$url,
+                    'redirect' => true, 'content' => 'Proszę chwileczkę poczekać'));
             } else {
-                $this->view('account/login', "Logowanie – niepowodzenie", array());
+                $this->view('account/login', "Logowanie – niepowodzenie", null);
             }
+        } else if($_POST['tried']==1) {
+            $this->view('account/login', "Logowanie", null);        
         } else {
-            $this->view('account/login', "logowanie", null);        
+            $this->view('account/login', "Logowanie – Błąd", null);        
         }
     }
     /**
      * userout
      */
     public function out() {        
-        $this->view('account/logout', "Do zobaczenia!", null);
         Session::destroy();
+        $url = "..";
+        $this->view('redirect', "Wylogowywanie…", array('heading' => 'Trwa wylogowywanie…', 'url'=>$url,
+                    'redirect' => true, 'content' => 'Proszę chwileczkę poczekać'));
     }
-    
-    public function register() {
-        //here check if user already tried to register
-        $this->view('account/register', "Rejestracja", array('argument'));
-    }
-    
+   
     /**
      * Verify user
      */    
-    private function verify() {        
-        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
-        $hash = sha1(filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING));        
+    private function verify($email, $hash) {        
         $tmp = $this->udao->findByLoginAndPass($email, $hash);        
         if(!is_null($tmp)) {
             return $tmp;
