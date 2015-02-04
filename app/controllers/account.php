@@ -63,7 +63,7 @@ class Account extends Controller {
 
                             $msg = $this->generateWelcome($newUser, $hash);
                             ControllerHelper::sendmail($email, "Potwierdzenie rejestracji", $msg);                       
-                            $this->view('account/registered', "Rejestracja", "Success");
+                            $this->view('account/registered', "Rejestracja", "Rejestracja przebiegła pomyślnie");
                         } else {
                             $this->view('account/error', "Rejestracja", "Twoje konto już istnieje w bazie danych.");
                         }
@@ -78,6 +78,7 @@ class Account extends Controller {
     
     public function activate($hash) {
         $this->udao->activateByHash($hash);
+        $this->view('account/registered', "Rejestracja", "Aktywacja przebiegła pomyślnie");
     }
     
     
