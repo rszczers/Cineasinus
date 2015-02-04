@@ -8,12 +8,26 @@ class UsersDAO implements IUserDAO{
     }
     
     public function add($user) {
-        $sql = $this->sqlAdd($user);
-        $this->db->execQuery($sql);
+        try {
+            $sql = $this->sqlAdd($user);              
+            $this->db->execQuery($sql);
+            }
+        catch (Exception $e) {}
+        
+            $sql = "SELECT * FROM users WHERE first = '" . $user->getFirst() .
+                "' AND last = '" . $user->getLast() . "' AND email = '" . $user->getEmail().
+                "' AND phone = '" . $user->getPhone() . "';";
+            echo $sql;
+            
+            $result = $this->db->execQuery($sql);                                    
+            $result = $result[0]['id'];
+            return $result;                    
     }
 
-    public function chRole($arg) {
-        
+    public function chRole($user, $role) {
+        $user->setRank($role);
+        $sql = $this->sqlUpdate($user);
+        $this->db->execQuery($sql);
     }
 
     public function delete($user) {
@@ -63,17 +77,21 @@ class UsersDAO implements IUserDAO{
     }
 
     public function sqlAdd($user) {
-        $sql = "insert into `users` "
-                . "(`passhash`, `email`, `rank`,"
-                . "`first`, `last`, `phone`)"                
-                . " values (" .
-                "'" . $user->getPasshass() . "," .                
-                "'" . $user->getEmail() . "," .
-                "'" . $user->getRank() . "," .                
-                "'" . $user->getFirst() . "," .                
-                "'" . $user->getLast() . "," .                
-                "'" . $user->getPhone() . ")";
-        return $sql;
+        try {
+            $sql = "insert into `users` "
+                    . "(passhash, email, rank, "
+                    . "first, last, phone)"                
+                    . " values (" .
+                    "'" . $user->getPasshash() . "', " .                
+                    "'" . $user->getEmail() . "', " .
+                    "'" . $user->getRank() . "', " .                
+                    "'" . $user->getFirst() . "', " .                
+                    "'" . $user->getLast() . "', " .                
+                    "'" . $user->getPhone() . "');";
+            return $sql;
+        } catch (Exception $e) {
+                        
+        }
     }
 
     public function sqlRead($user) {
@@ -88,14 +106,15 @@ class UsersDAO implements IUserDAO{
     }
     
     public function sqlUpdate($user) {
-        $sql = "update `users`" .
-               "set passhash = '" . $user->getPasshash() . "'," .
-               "email = '" . $user->getEmail() . "'," .
-               "rank = '" . $user->getRank() . "'," .
-               "first = '" . $user->getFirst() . "'" .
-               "last = '" . $user->getLast() . "'" .
+        $sql = "update `users` " .
+               "set passhash = '" . $user->getPasshash() . "', " .
+               "email = '" . $user->getEmail() . "', " .
+               "id = '" . $user->getId() . "', " .
+               "rank = '" . $user->getRank() . "', " .
+               "first = '" . $user->getFirst() . "', " .
+               "last = '" . $user->getLast() . "', " .
                "phone = '" . $user->getPhone() . "' " .               
-               "where 'id' = " . $user->getId();
+               "where id = '" . $user->getId() . "';";
         return $sql;
     }
 
@@ -126,6 +145,37 @@ class UsersDAO implements IUserDAO{
             return new User($array[0]);
         }
         return null;
+    }
+    
+    public function findById($id) {
+        $sql = "SELECT * FROM `users` WHERE id='" . $id . "';";
+        
+        $array = $this->db->execQuery($sql);
+        
+        if(!is_null($array[0]['id'])) {
+            return new User($array[0]);
+        }
+        return null;
+    }
+    
+    public function toActivate($userid, $hash) {
+        try {
+        $sql = "insert into `activation` (`userid`, `hash`) values ("
+                . "'" . $userid . "', '" . $hash . "');";
+        $this->db->execQuery($sql);
+        } catch (Exception $e) {
+            
+        }
+    }
+    
+    public function activateByHash($hash) {
+        $sql = "select * from `activation`";
+        $result = $this->db->execQuery($sql);        
+        $userid = $result[0]['userid'];
+        $user = $this->findById($userid);        
+        if( $user->getRank() == 0) {
+            $this->chRole($user, 1);
+        }
     }
 
 }
