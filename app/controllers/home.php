@@ -26,6 +26,6 @@ class Home extends Controller {
         for($i=0; $i<6; $i++) {           
             $data[] = $this->mdao->findById($randMatrix[$i]);
         }        
-        $this->view('home/index', "Cineasinus", array('page' => $page, 'data' => $data));  
+        $this->view('home/index', "Cineasinus", array('page' => $page, 'data' => $data));
     }        
 }

@@ -4,7 +4,7 @@ class EditFilm implements View{
     
     function __construct($data) {
         $this->data = $data;
-        $this->show($data);
+        $this->show();
     }
     
     public function show() {

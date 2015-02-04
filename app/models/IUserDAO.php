@@ -24,7 +24,7 @@ interface IUserDAO {
     public function add($arg);
     public function edit($arg);
     public function delete($arg);
-    public function chRole($arg);
+    public function chRole($user, $role);
     
     public function populate();
 }

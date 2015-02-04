@@ -19,6 +19,15 @@
             <?php new MoviePreviewView($data['data'][3]); ?>
             <?php new MoviePreviewView($data['data'][4]); ?>
             <?php new MoviePreviewView($data['data'][5]); ?>
+<<<<<<< HEAD
            
         </div> 
+=======
+            
+        </div>
+
+    
+     
+
+>>>>>>> 1c5aec4146012fcbc5cfd08101c477908231dc67
     <?php require '../app/views/footer.php' ?>

@@ -2,18 +2,17 @@
 class User implements Model {
     private $id;   
     private $email;
-    private $rank;
-    private $avatar;
+    private $rank;    
     private $first;
     private $last;
-    private $phone;    
+    private $phone;
+    private $passhash;
     
     function __construct($array) {
         $this->id = $array['id'];
         $this->passhash = $array['passhash'];
         $this->email = $array['email'];
-        $this->rank = $array['rank'];
-        $this->avatar = $array['avatar'];
+        $this->rank = $array['rank'];        
         $this->first = $array['first'];
         $this->last = $array['last'];
         $this->phone = $array['phone'];        
@@ -23,7 +22,7 @@ class User implements Model {
         return $this->id;
     }
 
-    function getPasshash() {
+    public function getPasshash() {
         return $this->passhash;
     }
 
@@ -31,13 +30,9 @@ class User implements Model {
         return $this->email;
     }
 
-    function getRank() {
+    public function getRank() {
         return $this->rank;
-    }
-
-    function getAvatar() {
-        return $this->avatar;
-    }
+    }  
 
     function getFirst() {
         return $this->first;
@@ -54,4 +49,11 @@ class User implements Model {
     function setId($id) {
         $this->id = $id;
     }
+        
+    
+    function setRank($rank) {
+        $this->rank = $rank;
+    }
+    
+   
 }
