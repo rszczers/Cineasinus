@@ -6,7 +6,8 @@ require_once '../app/views/MoviePreviewView.php';
 require_once '../app/views/EditFilm.php';
 require_once '../app/core/View.php';
 require_once '../app/controllers/ControllerHelper.php';
-
+require_once '../app/views/EditRepertoire.php';
+require_once '../app/views/MenageView.php';
 
 
 class Home extends Controller {

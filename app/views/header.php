@@ -21,7 +21,8 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->        
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
+        <div class="navbar-inner">
+        <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -32,6 +33,12 @@
           <a class="navbar-brand" href="http://<?php echo App::ABS_PATH ?>">Cineasinus</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Repertuar <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Rezerwacje</a></li>
+                <li><a href="./browse/index">Filmy</a></li>
+            </ul>
+            
           <form action="log/in" class="navbar-form navbar-right" role="form" method="post">
             <div class="form-group">
               <input type="text" placeholder="Email" class="form-control">
@@ -43,4 +50,5 @@
           </form>
         </div><!--/.navbar-collapse -->
       </div>
+     </div>
     </nav>

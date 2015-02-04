@@ -1,5 +1,6 @@
 <?php
 class Manage extends Controller {
+           
     public function addMovie($movie) {
         $movie->sqlAdd();
     }
@@ -19,8 +20,5 @@ class Manage extends Controller {
     public function showRepertIDRes($userid) {
         
     }
-    
-    
-    
     
 }
