@@ -24,7 +24,7 @@ class Account extends Controller {
     
     public function register() {
         if(isset($_SESSION['userdata']))
-            $this->view('account/error', "Rejestracja – Błąd", 'Jesteś już zalogowany');
+            $this->view('account/error', "Rejestracja – Błąd", array('heading' => 'Trwa przekierowywanie…', 'content' => 'Jesteś już zalogowany', 'redirect' => true, 'url' => '..'));
         else {
             $first = filter_input(INPUT_POST, 'first', FILTER_SANITIZE_STRING);
             $last = filter_input(INPUT_POST, 'last', FILTER_SANITIZE_STRING);
@@ -71,7 +71,7 @@ class Account extends Controller {
                         $this->view('account/error', "Rejestracja", array('content' => "Podane hasła różnią się."));
                     }
             } else {
-                $this->view('account/error', "Rejestracja", array('content' => "Nie wypełniono wszystkich pól"));
+                $this->view('account/error', "Rejestracja", array('content' => ""));
             }
         }
     }

@@ -1,7 +1,8 @@
 <?php require '../app/views/header.php' ?>
 <div class="jumbotron">
     <div class ="container">
-        <div class="col-md-6">        
+        <div class="col-md-6">   
+        <?php echo $data['content'] ?>
         </div>
             <div class="col-md-6">
                 <h3 class="dark-grey">Rejestracja</h3>
