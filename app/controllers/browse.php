@@ -12,10 +12,13 @@ require_once '../app/core/View.php';
 class Browse extends Controller {
     private $mdao;
     private $rdao;
+    private $redao;
     
     function __construct() {
         $this->mdao = new MoviesDAO();
         $this->rdao = new RepertoireDAO();
+        $this->redao = new ReservationDAO();
+        
         parent::__construct();        
     }
     
@@ -27,12 +30,20 @@ class Browse extends Controller {
     }  
     
     public function book($id) {
+        
     }
     
     public function repertoire($i = 0) {
         $perpage = 5;
         $data = $this->rdao->getPage($perpage, $i);        
         $this->view('browse/repertoire', "Repertuar", array('rep' => $data, 'perpage' => $perpage));
+    }
+    
+    public function reservations() {
+        if(isset($_SESSION['userdata'])) {
+            $reservations = $this->redao->getViaUserID($_SESSION['userdata']);
+            $this->view('browse/reservations', "Twoje rezerwacje", array('reservations' => $reservations));
+        }
     }
 }
   
