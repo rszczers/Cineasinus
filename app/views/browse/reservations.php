@@ -2,7 +2,9 @@
 <div class="jumbotron">
     <div class="container">
         <pre>
-        <?php print_r($data['reservations'])?>
+            <?php
+                new ReservationListView($data);
+            ?>
         </pre>
     </div>
 </div>

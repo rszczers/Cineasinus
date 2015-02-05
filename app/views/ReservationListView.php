@@ -1,13 +1,15 @@
 <?php
 class ReservationListView implements View {
-    private $title;
-    private $code;
-    private $time;
-    private $date;
-    private $checked;
+    private $movieid = array();
+    private $title = array();
+    private $code = array();
+    private $time = array();
+    private $date = array();
+    private $checked = array();
         
     function __construct($arg) {
         for($i=0; $i<count($arg['title']); $i++) {
+            $this->movieid=$arg['movies'][$i]->getId();
             $this->title=$arg['movies'][$i]->getName();
             $this->code=$arg['reservations'][$i]->getCode();
             $this->time=$this->parseTime($arg['repertoire'][$i]->getDate());
@@ -27,26 +29,26 @@ class ReservationListView implements View {
         echo "<th>Potwierdzenie</th>";
         echo "</tr></thead>";
         echo "<tbody data-link=\"row\" class=\"rowlink\">";
-        for($i=0; $i<count($this->titles); $i++) {            
+        for($i=0; $i<count($this->title); $i++) {            
             echo "<tr class=\"clickableRow\" href=\"http://" . App::ABS_PATH
-                . "film/details/" . $this->ids[$i] .  "\">";
+                . "film/details/" . $this->movieid[$i] .  "\">";
             echo "<td>";            
             echo "<a href=\"http://" . App::ABS_PATH
-                . "film/details/" . $this->ids[$i] .  "\">";
-            echo $this->titles[$i];
+                . "film/details/" . $this->movieid[$i] .  "\">";
+            echo $this->title[$i];
             echo "</a>";
             echo "</td>\n";
             echo "<td>";
-            echo $this->dates[$i];
+            echo $this->code[$i];
             echo "</td>\n";
             echo "<td>";
-            echo $this->times[$i];
+            echo $this->date[$i];
             echo "</td>\n";
             echo "<td>";
-            echo $this->durations[$i] . "min";
+            echo $this->time[$i] . "min";
             echo "</td>\n";
             echo "<td>";
-            echo $this->prices[$i] . "zł";
+            echo $this->checked[$i] . "zł";
             echo "</td>\n";
             echo "</tr>";
         }
