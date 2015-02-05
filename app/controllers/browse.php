@@ -55,7 +55,7 @@ class Browse extends Controller {
             $user = unserialize($_SESSION['userdata']);            
             $perpage = 5;
             $reservations = $this->redao->getViaUserID($user->getId(), $perpage, $i);
-            $this->view('browse/reservations', "Twoje rezerwacje", array('data' => $reservations));
+            $this->view('browse/reservations', "Twoje rezerwacje", array('joined' => $reservations));
         }
     }
 }

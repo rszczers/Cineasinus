@@ -1,11 +1,9 @@
 <?php require '../app/views/header.php' ?>
 <div class="jumbotron">
-    <div class="container">
-        <pre>
-            <?php
-                new ReservationListView($data);
-            ?>
-        </pre>
+    <div class="container">        
+            <?php                                
+                new ReservationListView($data['joined']);
+            ?>        
     </div>
 </div>
 <div class="container">

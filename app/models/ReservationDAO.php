@@ -127,8 +127,8 @@ class ReservationDAO implements IReservationDAO {
         }
         
         $length = $this->db->length('reservations');
-        $result = array('repertoire' => $repertoire, 'movies' => $movies, 'reservations' => $reservations, 'length' => $length);
-        return $result;                    
+        return array('repertoire' => $repertoire, 'movies' => $movies, 'reservations' => $reservations, 'length' => $length);
+        
     }    
 
     public function isChecked($arg) {

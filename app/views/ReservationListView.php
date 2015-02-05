@@ -8,13 +8,15 @@ class ReservationListView implements View {
     private $checked = array();
         
     function __construct($arg) {
-        for($i=0; $i<count($arg['title']); $i++) {
-            $this->movieid=$arg['movies'][$i]->getId();
-            $this->title=$arg['movies'][$i]->getName();
-            $this->code=$arg['reservations'][$i]->getCode();
-            $this->time=$this->parseTime($arg['repertoire'][$i]->getDate());
-            $this->date = $this->parseDate($arg['repertoire'][$i]->getDate());
-            $this->checked = $arg['reservations'][$i]->isChecked();
+        for($i=0; $i<count($arg['movies']); $i++) {
+            $this->movieid[] = $arg['movies'][$i]->getId();
+            $this->title[] = $arg['movies'][$i]->getName();
+            $this->code[] = $arg['reservations'][$i]->getCode();
+            $this->time[] = $this->parseTime($arg['repertoire'][$i]->getDate());
+            $this->date[] = $this->parseDate($arg['repertoire'][$i]->getDate());
+            $this->checked[] = $this->checkParse($arg['reservations'][$i]->isChecked());
+                    
+                    
         }        
         $this->show();
     }
@@ -45,10 +47,10 @@ class ReservationListView implements View {
             echo $this->date[$i];
             echo "</td>\n";
             echo "<td>";
-            echo $this->time[$i] . "min";
+            echo $this->time[$i];
             echo "</td>\n";
             echo "<td>";
-            echo $this->checked[$i] . "zł";
+            echo $this->checked[$i];
             echo "</td>\n";
             echo "</tr>";
         }
@@ -76,5 +78,13 @@ class ReservationListView implements View {
             $tmp['hour'] = '0' . $tmp['hour'];
         }
         return $tmp['hour'] . ":" . $tmp['minute'];
+    }
+    
+    private function checkParse($arg) {
+        if($arg==1) {
+            return 'Tak';
+        } else {
+            return 'Nie';
+        }
     }
 }
