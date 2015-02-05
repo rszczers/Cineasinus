@@ -20,7 +20,7 @@ class RepertoireListView implements View {
     }
 
     public function show() {
-        echo "<table class=\"table table-hover\ data-link=\"row\">";
+        echo "<table class=\"table table-hover\">";
         echo "<thead><tr>";
         echo "<th>Tytuł</th>";
         echo "<th>Data</th>";
@@ -28,27 +28,28 @@ class RepertoireListView implements View {
         echo "<th>Długość</th>";
         echo "<th>Cena</th>";
         echo "</tr></thead>";
-        echo "<tbody>";
+        echo "<tbody data-link=\"row\" class=\"rowlink\">";
         for($i=0; $i<count($this->titles); $i++) {            
-            echo "<tr>";
+            echo "<tr class=\"clickableRow\" href=\"http://" . App::ABS_PATH
+                . "film/details/" . $this->ids[$i] .  "\">";
             echo "<td>";            
             echo "<a href=\"http://" . App::ABS_PATH
                 . "film/details/" . $this->ids[$i] .  "\">";
             echo $this->titles[$i];
             echo "</a>";
-            echo "</td>";
+            echo "</td>\n";
             echo "<td>";
             echo $this->dates[$i];
-            echo "</td>";
+            echo "</td>\n";
             echo "<td>";
             echo $this->times[$i];
-            echo "</td>";
+            echo "</td>\n";
             echo "<td>";
             echo $this->durations[$i] . "min";
-            echo "</td>";
+            echo "</td>\n";
             echo "<td>";
             echo $this->prices[$i] . "zł";
-            echo "</td>";
+            echo "</td>\n";
             echo "</tr>";
         }
         echo "</tbody>";

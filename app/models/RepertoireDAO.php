@@ -91,14 +91,15 @@ class RepertoireDAO implements IRepertoireDAO {
         $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //        $pdo -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         
-        $limit1 = (int)($q * ($i+1));
-        $limit2 = (int)($q * $i);
+        $x = (int)($q * $i);
+        $y = $q;
         
-        $sql = "SELECT * FROM `repertoire` INNER JOIN `movies` ON repertoire.movieid=movies.id  LIMIT :limit2, :limit1;";           
+//        $sql = "SELECT * FROM `repertoire` INNER JOIN `movies` ON repertoire.movieid=movies.id  LIMIT :limit2, :limit1;";           
+        $sql = "SELECT * FROM `repertoire` INNER JOIN `movies` ON repertoire.movieid=movies.id ORDER BY date LIMIT :q, :from;";    
         $stmt = $pdo -> prepare($sql);
         
-        $stmt->bindParam(':limit1', $limit1, PDO::PARAM_INT);
-        $stmt->bindParam(':limit2', $limit2, PDO::PARAM_INT);
+        $stmt->bindParam(':from', $y, PDO::PARAM_INT);
+        $stmt->bindParam(':q', $x, PDO::PARAM_INT);
         
         $stmt->execute();
 
@@ -121,8 +122,11 @@ class RepertoireDAO implements IRepertoireDAO {
                 'fpremiere' => $row['fpremiere'],
                 'poster' => $row['poster']);
             $movies[] = new Movie($tmp);
-        }        
-        $result = array('repertoire' => $repertoire, 'movies' => $movies);
+        }
+        
+        $length = $this->db->length('repertoire');
+        
+        $result = array('repertoire' => $repertoire, 'movies' => $movies, 'length' => $length);
         return $result;
     }
     

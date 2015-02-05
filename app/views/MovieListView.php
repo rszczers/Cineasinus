@@ -15,9 +15,10 @@ class MovieListView implements View {
         echo "<th>Reżyser</th>";
         echo "<th>Długość</th>";
         echo "</tr></thead>";
-        echo "<tbody>";
+        echo "<tbody data-link=\"row\" class=\"rowlink\">";
         foreach($this->data as $key => $movie) {
-            echo "<tr>";
+            echo "<tr class=\"clickableRow\" href=\"http://" . App::ABS_PATH
+                . "film/details/" . $movie->getId() .  "\">";
             echo "<td>";
             echo $movie->getName();
             echo "</td>";

@@ -169,4 +169,33 @@ class MoviesDAO implements IMovieDAO {
         $array = $this->db->execQuery($sql);
         return $array[0]['count(id)'];
     }   
+    
+    public function getPage($q, $i) {
+        $pdo = new PDO(App::DSN, App::DBLOGIN, App::DBPASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $x = (int)($q * $i);
+        $y = $q;
+        $sql = "SELECT * FROM `movies` LIMIT :q, :from;";    
+        $stmt = $pdo -> prepare($sql);
+        $stmt->bindParam(':from', $y, PDO::PARAM_INT);
+        $stmt->bindParam(':q', $x, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);                
+        $movies = array();
+        foreach($result as $key => $row) {            
+            $tmp = array('name' => $row['name'],
+                'category' => $row['category'],
+                'duration' => $row['duration'],
+                'diretor' => $row['director'],
+                'description'=> $row ['description'],
+                'plpremiere' => $row['plpremiere'],
+                'id' => $row['id'],
+                'fpremiere' => $row['fpremiere'],
+                'poster' => $row['poster']);
+            $movies[] = new Movie($tmp);
+        }
+        $length = $this->db->length('repertoire');
+        return array('movies' => $movies, 'length' => $length);
+    }
+    
 }

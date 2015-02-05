@@ -1,4 +1,4 @@
-s<?php
+<?php
 require_once '../app/models/IMovieDAO.php';
 require_once '../app/models/MoviesDAO.php';
 require_once '../app/views/MovieListView.php';
@@ -7,7 +7,6 @@ require_once '../app/core/DbAdapter.php';
 require_once '../app/models/IRepertoireDAO.php';
 require_once '../app/models/RepertoireDAO.php';
 require_once '../app/views/RepertoireListView.php';
-
 require_once '../app/core/View.php';
 
 class Browse extends Controller {
@@ -20,17 +19,20 @@ class Browse extends Controller {
         parent::__construct();        
     }
     
-    public function index() {        
+    public function index($i = 0) {        
         $data = $this->mdao->populateMovies();
-        $this->view('browse/index', "Przeglądaj filmy", array('page' => $page, 'data' => $data));
+        $perpage = 6;
+        $previews = $this->mdao->getPage($perpage, $i);        
+        $this->view('browse/index', "Przeglądaj filmy", array('perpage' => $perpage, 'data' => $data, 'previews' => $previews));
     }  
     
     public function book($id) {
     }
     
-    public function repertoire($p = 0) {
-        $data = $this->rdao->getPage(5, $p);
-        $this->view('browse/repertoire', "Repertuar", $data);
+    public function repertoire($i = 0) {
+        $perpage = 5;
+        $data = $this->rdao->getPage($perpage, $i);        
+        $this->view('browse/repertoire', "Repertuar", array('rep' => $data, 'perpage' => $perpage));
     }
 }
   
