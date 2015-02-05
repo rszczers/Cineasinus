@@ -58,11 +58,23 @@ class RepertoireListView implements View {
 
     private function parseDate($arg) {
         $tmp = date_parse($arg);
+        if(strlen($tmp['day'])==1) {
+            $tmp['day'] = '0' . $tmp['day'];
+        }
+        if(strlen($tmp['month'])==1) {
+            $tmp['month'] = '0' . $tmp['month'];
+        }
         return $tmp['day'] . "-" . $tmp['month'] ."-". $tmp['year'];
     }
     
     private function parseTime($arg) {
         $tmp = date_parse($arg);
-        return $tmp['hour'] . "-" . $tmp['minute'];
+        if(strlen($tmp['minute'])==1) {
+            $tmp['minute'] = '0' . $tmp['minute'];
+        }
+        if(strlen($tmp['hour'])==1) {
+            $tmp['hour'] = '0' . $tmp['hour'];
+        }
+        return $tmp['hour'] . ":" . $tmp['minute'];
     }
 }

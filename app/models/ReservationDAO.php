@@ -4,47 +4,35 @@ class ReservationDAO implements IReservationDAO {
     private $db;
     
     function __construct() {
-        $this->db = new DbAdapter();
-    }
-
-    function sqlAdd ($user) {
-        $sql = "insert into `reservations` "
-                . "(`userid`, `code`, `repertid`,"
-                . "`checked`)"
-                . " values (" .
-                "'" . $user->getUserId() . "," .                
-                "'" . $user->getCode() . "," .
-                "'" . $user->getRepertId() . "," .                
-                "'" . $user->isChecked() . ")";
-        return $sql;        
-    }
+        $this->db = DbAdapter::getInstance();
+    }        
     
-    function sqlRead($user) {
-        $sql = "select * from `reservations` where 'id' = " . 
-               $user->getId();
-        return $sql;
-    }
-    public function sqlRm($user) {
-        $sql = "delete from `reservation` where " .
-            "'id' = " . $user->getId();
-        return sql;
-    }
-    public function sqlUpdate($user) {
-        $sql = "update `reservation`" .
-               "set userid = '" . $user->getUserId() . "'," .
-               "code = '" . $user->getCode() . "'," .
-               "repertid = '" . $user->getRepertId() . "'," .
-               "checked = '" . $user->isChecked() . "' " .
-               "where 'id' = " . $user->getId();
-        return $sql;
-    }
-            
-    public function sqlCheck($user) {
-        $sql = "update `reservations` " .
-               "set checked = '1' where "
-                . "id = " . $user->getId();        
-        return $sql;
-    }
+    public function add($reser) {        
+        $pdo = new PDO(App::DSN, App::DBLOGIN, App::DBPASS);
+        $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        $sql = "insert into `reservations` "
+                . "(`userid`, `code`, `repertid`)"                
+                . " values ("
+                . ":userid, "
+                . ":code, "
+                . ":repertid );";
+
+        $stmt = $pdo -> prepare($sql);
+        
+        $stmt -> bindValue(':userid', $user->getPasshash(), PDO::PARAM_STR);
+        $stmt -> bindValue(':code', $user->getEmail(), PDO::PARAM_STR);
+        $stmt -> bindValue(':repertid', $user->getRank(), PDO::PARAM_INT);
+                
+        $stmt ->execute();
+                      
+        $sql = "SELECT * FROM `reservations` WHERE userid = '" . $reser->getUserId() .
+            "' AND code = '" . $reser->getCode() . "' AND repertid = '" . $reser->getRepertId(). "';";
+
+        $result = $this->db->execQuery($sql);                                    
+        $result = $result[0]['id'];
+        return $result;                    
+    }    
     
     public function getViaMovieId($arg) {        
     }
@@ -64,10 +52,7 @@ class ReservationDAO implements IReservationDAO {
     public function getViaUserID($arg) {
         
     }
-
-    public function add($arg) {
-        
-    }
+    
 
     public function check($arg) {
         

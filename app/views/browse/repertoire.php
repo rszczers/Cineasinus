@@ -8,8 +8,6 @@
     </div>
 </div>
 <div class="container">
-
-
     <?php
     $pages = array();
     $no = floor($data['rep']['length'] / $data['perpage']) + 1;
@@ -17,7 +15,7 @@
         $pages[] = "http://" . App::ABS_PATH . "browse/repertoire/" . $i;
     }
     ?>               
-    <p class="text-center">Strona: 
+    <h4 class="text-center">Strona: 
         <?php
         for ($i = 1; $i <= count($pages); $i++) {
             echo "<a href=\"" . $pages[$i - 1] . "\">" . $i . "</a>";
@@ -26,7 +24,7 @@
             }
         }
         ?>
-    </p>
+    </h4>
 </div>   
 
 <div class="container">

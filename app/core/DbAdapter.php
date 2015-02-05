@@ -27,11 +27,14 @@ class DbAdapter extends PDO {
         return $tmp[0]['count'];
     }
         
-   
+    /**
+     * Injection vulnerable, watch out.
+     * @param type $sql
+     * @return type
+     */
     public function execQuery($sql) {        
         $sth = parent::prepare($sql);
-        $sth->execute();
-         
+        $sth->execute();         
         $result = array();
         $row = $sth->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
         while($row != null) {

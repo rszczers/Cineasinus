@@ -41,6 +41,12 @@ class MovieDetailsView implements View {
     
     private function parsePremiere($arg) {
         $tmp = date_parse($arg);
+        if(strlen($tmp['day'])==1) {
+            $tmp['day'] = '0' . $tmp['day'];
+        }
+        if(strlen($tmp['month'])==1) {
+            $tmp['month'] = '0' . $tmp['month'];
+        }
         return $tmp['day'] . "-" . $tmp['month'] ."-". $tmp['year'];
     }
 }

@@ -1,13 +1,15 @@
 <?php
 require_once '../app/models/Movie.php';
 class MoviesDAO implements IMovieDAO {
-    private $db;
-    
-    
+    private $db;        
     function __construct() {
         $this->db = \DbAdapter::getInstance();        
     }
     
+  /**
+     * sql injection vulnerable
+     * @param type $movie
+     */
     public function add($movie) {
         $sql = $this->sqlAdd($movie);
         $this->db->execQuery($sql);

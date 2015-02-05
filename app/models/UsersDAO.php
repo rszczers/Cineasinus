@@ -26,7 +26,7 @@ class UsersDAO implements IUserDAO{
 
         $stmt = $pdo -> prepare($sql);
         
-        $stmt -> bindValue(':passhash', $user->getPasshash(), PDO::PARAM_STR); // 2
+        $stmt -> bindValue(':passhash', $user->getPasshash(), PDO::PARAM_STR);
         $stmt -> bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
         $stmt -> bindValue(':rank', $user->getRank(), PDO::PARAM_INT);
         $stmt -> bindValue(':first', $user->getFirst(), PDO::PARAM_STR);
