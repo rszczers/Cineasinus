@@ -6,6 +6,8 @@ require_once '../app/views/MoviePreviewView.php';
 require_once '../app/core/DbAdapter.php';
 require_once '../app/models/IRepertoireDAO.php';
 require_once '../app/models/RepertoireDAO.php';
+require_once '../app/views/RepertoireListView.php';
+
 require_once '../app/core/View.php';
 
 class Browse extends Controller {
@@ -27,8 +29,8 @@ class Browse extends Controller {
     }
     
     public function repertoire($p = 0) {
-        $movies = $this->rdao->getPage(5, $p);        
-        $this->view('browse/repertoire', "Repertuar", array('movies' => $movies));
+        $data = $this->rdao->getPage(5, $p);
+        $this->view('browse/repertoire', "Repertuar", $data);
     }
 }
   

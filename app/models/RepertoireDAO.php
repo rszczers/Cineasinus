@@ -87,19 +87,42 @@ class RepertoireDAO implements IRepertoireDAO {
     }
     
     public function getPage($q, $i) {
-        $sql = "SELECT * FROM "
-                . "("
-                . " SELECT * FROM `repertoire` LIMIT '" . ($q * ($i+1))
-                . "')"
-                . " MINUS "
-                . "SELECT * FROM `repertoire` LIMIT '" . ($q * $i) . "';";    
-        echo $sql;
-        $tmp = $this->db->execQuery($sql);
+        $pdo = new PDO(App::DSN, App::DBLOGIN, App::DBPASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//        $pdo -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         
-        $result = array();
-        foreach($tmp as $key => $row) {                        
-            $result[] = new Repertoire($row);
-        }
+        $limit1 = (int)($q * ($i+1));
+        $limit2 = (int)($q * $i);
+        
+        $sql = "SELECT * FROM `repertoire` INNER JOIN `movies` ON repertoire.movieid=movies.id  LIMIT :limit2, :limit1;";           
+        $stmt = $pdo -> prepare($sql);
+        
+        $stmt->bindParam(':limit1', $limit1, PDO::PARAM_INT);
+        $stmt->bindParam(':limit2', $limit2, PDO::PARAM_INT);
+        
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);        
+        $repertoire = array();
+        $movies = array();
+        foreach($result as $key => $row) {
+            $tmp = array('movieid'=>$row['movieid'],
+                'id'=>$row['id'],
+                'date'=>$row['date'],
+                'price'=>$row['price']);
+            $repertoire[] = new Repertoire($tmp);
+            $tmp = array('name' => $row['name'],
+                'category' => $row['category'],
+                'duration' => $row['duration'],
+                'diretor' => $row['director'],
+                'description'=> $row ['description'],
+                'plpremiere' => $row['plpremiere'],
+                'id' => $row['id'],
+                'fpremiere' => $row['fpremiere'],
+                'poster' => $row['poster']);
+            $movies[] = new Movie($tmp);
+        }        
+        $result = array('repertoire' => $repertoire, 'movies' => $movies);
         return $result;
     }
     

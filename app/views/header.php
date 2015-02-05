@@ -22,8 +22,10 @@
         <link rel="stylesheet" href="http://<?php echo App::ABS_PATH; ?>data/css/style.css">        
         <link rel="stylesheet" href="http://<?php echo App::ABS_PATH; ?>data/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="http://<?php echo App::ABS_PATH; ?>data/css/main.css">
+        <link rel="stylesheet" href="http://<?php echo App::ABS_PATH; ?>data/css/jasny-bootstrap.min.css">
 
         <script src="http://<?php echo App::ABS_PATH; ?>data/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="http://<?php echo App::ABS_PATH; ?>data/js/jasny-bootstrap.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>

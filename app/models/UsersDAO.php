@@ -1,5 +1,6 @@
 <?php
 require_once '../app/models/User.php';
+
 class UsersDAO implements IUserDAO{
     private $db;
     
@@ -7,20 +8,40 @@ class UsersDAO implements IUserDAO{
         $this->db = \DbAdapter::getInstance();        
     }
     
-    public function add($user) {
-        try {
-            $sql = $this->sqlAdd($user);              
-            $this->db->execQuery($sql);
-            }
-        catch (Exception $e) {}
-            $sql = "SELECT * FROM users WHERE first = '" . $user->getFirst() .
-                "' AND last = '" . $user->getLast() . "' AND email = '" . $user->getEmail().
-                "' AND phone = '" . $user->getPhone() . "';";
-            echo $sql;
-            
-            $result = $this->db->execQuery($sql);                                    
-            $result = $result[0]['id'];
-            return $result;                    
+    public function add($user) {        
+
+        $pdo = new PDO(App::DSN, App::DBLOGIN, App::DBPASS);
+        $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        $sql = "insert into `users` "
+                . "(`passhash`, `email`, `rank`, "
+                . "`first`, `last`, `phone`)"                
+                . " values ("
+                . ":passhash, "
+                . ":email, "
+                . ":rank, "
+                . ":first, "
+                . ":last, "
+                . ":phone );";
+
+        $stmt = $pdo -> prepare($sql);
+        
+        $stmt -> bindValue(':passhash', $user->getPasshash(), PDO::PARAM_STR); // 2
+        $stmt -> bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
+        $stmt -> bindValue(':rank', $user->getRank(), PDO::PARAM_INT);
+        $stmt -> bindValue(':first', $user->getFirst(), PDO::PARAM_STR);
+        $stmt -> bindValue(':last', $user->getLast(), PDO::PARAM_STR);
+        $stmt -> bindValue(':phone', $user->getPhone(), PDO::PARAM_INT);
+        
+        $stmt ->execute();
+                      
+        $sql = "SELECT * FROM users WHERE first = '" . $user->getFirst() .
+            "' AND last = '" . $user->getLast() . "' AND email = '" . $user->getEmail().
+            "' AND phone = '" . $user->getPhone() . "';";        
+
+        $result = $this->db->execQuery($sql);                                    
+        $result = $result[0]['id'];
+        return $result;                    
     }
 
     public function chRole($user, $role) {
@@ -77,24 +98,6 @@ class UsersDAO implements IUserDAO{
 
     public function getViaRole($args) {
         
-    }
-
-    public function sqlAdd($user) {
-        try {
-            $sql = "insert into `users` "
-                    . "(passhash, email, rank, "
-                    . "first, last, phone)"                
-                    . " values (" .
-                    "'" . $user->getPasshash() . "', " .                
-                    "'" . $user->getEmail() . "', " .
-                    "'" . $user->getRank() . "', " .                
-                    "'" . $user->getFirst() . "', " .                
-                    "'" . $user->getLast() . "', " .                
-                    "'" . $user->getPhone() . "');";
-            return $sql;
-        } catch (Exception $e) {
-                        
-        }
     }
 
     public function sqlRead($user) {
@@ -161,15 +164,15 @@ class UsersDAO implements IUserDAO{
     
     public function toActivate($userid, $hash) {
         try {
-        $sql = "insert into `activation` (`userid`, `hash`) values ("
+            $sql = "insert into `activation` (`userid`, `hash`) values ("
                 . "'" . $userid . "', '" . $hash . "');";
         $this->db->execQuery($sql);
         } catch (Exception $e) {}
     }
     
     public function activateByHash($hash) {
-        $sql = "select * from `activation`";
-        $result = $this->db->execQuery($sql);        
+        $sql = "select * from `activation`;";
+        $result = $this->db->execQuery($sql);
         $userid = $result[0]['userid'];
         $user = $this->findById($userid);        
         if( $user->getRank() == 0) {

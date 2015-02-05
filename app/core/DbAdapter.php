@@ -2,15 +2,10 @@
 
 class DbAdapter extends PDO {
     
-    private static $instance = false; 
-    
-    private static $dsn = "mysql:host=abraham.linuxpl.info;dbname=abraham_cineasinus;charset=utf8";
-    private static $username = "abraham_cineroot";
-    private static $passwd = "sprytnasarnajesledzie1";
-    
+    private static $instance = false;   
     
     private function DbAdapter() {
-        parent::__construct(self::$dsn, self::$username, self::$passwd);                
+        parent::__construct(App::DSN, App::DBLOGIN, App::DBPASS);                
         parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);        
     }
     
@@ -45,4 +40,5 @@ class DbAdapter extends PDO {
         }
         return $result;
     }
+        
 }

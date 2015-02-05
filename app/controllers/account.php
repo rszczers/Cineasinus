@@ -40,7 +40,7 @@ class Account extends Controller {
                     if(strcmp($pass, $passCheck)) {
                         /**
                                             *  Here goes part where new user is added to database
-                                            */                                     
+                                            */   
                         $array = array('email' => $email,
                             'rank' => 0,
                             'first' => $first,
@@ -49,19 +49,18 @@ class Account extends Controller {
                             'passhash' => $pass,
                             'id' => 0
                         );
-                        $newUser = new User($array);
-                        
+                        $newUser = new User($array);                        
                         if(is_null($this->udao->findByLoginAndPass($email, $pass))) {
                             $newId = $this->udao->add($newUser);
 
                             $newUser->setId($newId);                        
 
-                            $hash = ControllerHelper::userhash();
+                            $hash = sha1($email);
 
                             // here activation data is being sent to database
-                            $this->udao->toActivate($newUser->getId(), $pass);
+                            $this->udao->toActivate($newUser->getId(), $hash);
 
-                            $msg = $this->generateWelcome($newUser, $pass);
+                            $msg = $this->generateWelcome($newUser, $hash);
                             ControllerHelper::sendmail($email, "Cineasinus – potwierdzenie rejestracji", $msg);                       
                             $this->view('account/registered', "Rejestracja", array('content' => "Rejestracja przebiegła pomyślnie"));
                         } else {

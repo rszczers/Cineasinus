@@ -5,7 +5,7 @@
 </div>
     <div class="jumbotron">
         <div class="container">
-            <?php new MovieListView($data['movies']);?>
+            <?php new RepertoireListView($data);?>
         </div>
     </div>
           <div class="container">

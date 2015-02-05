@@ -5,15 +5,21 @@
 
 class App {
     const ABS_PATH = "rszczers.abraham.linuxpl.info/AI/Cineasinus/public/";
-    
+    const ADMIN_MAIL = 'trutututu@gmail.com';
+    const DSN = 'mysql:host=abraham.linuxpl.info;dbname=abraham_cineasinus;charset=utf8';
+    const DBLOGIN = 'abraham_cineroot';
+    const DBPASS = 'sprytnasarnajesledzie1';
+        
     //default conditions
     protected $controller = 'home';    
     protected $method = 'index';    
     protected $params = array();
             
     function __construct() {
-        require_once '../app/core/Session.php';
+        require_once '../app/core/Session.php';        
         Session::init();        
+        
+        
         
         $url = $this->parseUrl();                       
         //If there exsist such controller as the first argument, then
