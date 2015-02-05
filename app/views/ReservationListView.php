@@ -1,10 +1,18 @@
 <?php
 class ReservationListView implements View {
-
+    private $title;
+    private $code;
+    private $time;
+    private $date;
+    private $checked;
         
     function __construct($arg) {
-        for($i=0; $i<count($arg['movies']); $i++) {
-          
+        for($i=0; $i<count($arg['title']); $i++) {
+            $this->title=$arg['movies'][$i]->getName();
+            $this->code=$arg['reservations'][$i]->getCode();
+            $this->time=$this->parseTime($arg['repertoire'][$i]->getDate());
+            $this->date = $this->parseDate($arg['repertoire'][$i]->getDate());
+            $this->checked = $arg['reservations'][$i]->isChecked();
         }        
         $this->show();
     }
@@ -13,10 +21,10 @@ class ReservationListView implements View {
         echo "<table class=\"table table-hover\">";
         echo "<thead><tr>";
         echo "<th>Tytuł</th>";
+        echo "<th>Kod rezerwacji</th>";
         echo "<th>Data</th>";
         echo "<th>Godzina</th>";
-        echo "<th>Długość</th>";
-        echo "<th>Cena</th>";
+        echo "<th>Potwierdzenie</th>";
         echo "</tr></thead>";
         echo "<tbody data-link=\"row\" class=\"rowlink\">";
         for($i=0; $i<count($this->titles); $i++) {            

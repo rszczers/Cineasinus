@@ -32,7 +32,7 @@ class Log extends Controller {
             
             $auth = $this->verify($email, $hash);            
             if(!is_null($auth)) {
-                Session::set('userdata', $auth);
+                Session::set('userdata', serialize($auth));
                 // $url = "http:\\" . App::ABS_PATH;                
                 $url = "..";
                 $this->view('redirect', "Logowanie…", array('heading' => 'Trwa logowanie…', 'url'=>$url,

@@ -65,25 +65,29 @@ class ReservationDAO implements IReservationDAO {
         
     }
 
-    public function getViaUserID($user) {
+    public function getViaUserID($userid, $q, $i) {
         $pdo = new PDO(App::DSN, App::DBLOGIN, App::DBPASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
         $x = (int)($q * $i);
         
         $y = $q;
-        
-        $sql = "SELECT * FROM `reservations` a "
-             . "INNER JOIN `repertoire` b ON a.movieid = b.movies.id "
-             . "INNER JOIN `movies` c ON b.movieid = c.id "
-             . "WHERE userid = :userid" 
-             . "ORDER BY date LIMIT :q, :from;";
+              
+        $sql = "SELECT *
+            FROM reservations N
+            INNER JOIN repertoire M
+            ON N.repertid = M.id
+            INNER JOIN movies O
+            ON M.movieid = O.id
+            WHERE N.userid = :userid
+            ORDER BY M.date
+            LIMIT :q, :from;";
         
         $stmt = $pdo -> prepare($sql);
         
         $stmt->bindParam(':from', $y, PDO::PARAM_INT);
         $stmt->bindParam(':q', $x, PDO::PARAM_INT);
-        $stmt->bindParam(':userid', $user->getId(), PDO::PARAM_STR);
+        $stmt->bindParam(':userid', $userid, PDO::PARAM_STR);
         
         $stmt->execute();
 
@@ -103,17 +107,22 @@ class ReservationDAO implements IReservationDAO {
                 'id' => $row['id'],
                 'fpremiere' => $row['fpremiere'],
                 'poster' => $row['poster']);
+            
             $movies[] = new Movie($tmp);
             
             $tmp = array('movieid'=>$row['movieid'],
                 'id'=>$row['id'],
                 'date'=>$row['date'],
                 'price'=>$row['price']);
+            
             $repertoire[] = new Repertoire($tmp);
             
-            $tmp = array('id' => $row('id'), 'userid' => $row('userid'), 
-                'code' => $row('code'), 'repertid' => $row('repertid'), 
-                'checked' => $row('checked'));
+            $tmp = array('id' => $row['id'],
+                'userid' => $row['userid'], 
+                'code' => $row['code'],
+                'repertid' => $row['repertid'], 
+                'checked' => $row['checked']
+                    );
             $reservations[] = new Reservation($tmp);
         }
         

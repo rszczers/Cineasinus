@@ -1,7 +1,7 @@
 <?php
 interface IReservationDAO { 
     public function getViaId($arg);
-    public function getViaUserID($arg);
+    public function getViaUserID($user, $perpage, $page);
     public function getViaCode($arg);
     public function getViaRepertID($arg);
     public function isChecked($arg);
