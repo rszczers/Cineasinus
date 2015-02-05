@@ -1,9 +1,9 @@
 <?php require '../app/views/header.php' ?>
 
-<div class="jumbotron">
+<div class="jumbotron" id="startup">
     <div class="container">
-        <h1>Lorem ipsum!</h1>        
-        <p>Dolor sit amet, consectetur adipiscing elit. In dignissim nibh vel tellus ultrices pharetra. Aenean imperdiet ex non turpis fringilla, nec aliquet dolor pretium. Sed feugiat ipsum ultricies, tristique orci sed, maximus eros. Donec purus nulla, fermentum sit amet velit ac, pretium tempus augue. Duis non ante nibh. Sed et libero in dui auctor molestie id faucibus nisi. Integer lacus dolor, venenatis id cursus ac, mollis commodo libero. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque non eleifend erat. Phasellus eu interdum dolor. </p>                
+        <h1>Lorem ipsum dolor!</h1>
+        <p>Nam id pretium neque. Donec nec varius augue. Phasellus vulputate eu neque a rhoncus. Pellentesque vel nunc id odio iaculis dapibus. Morbi ac imperdiet tortor. Quisque cursus, lorem sed sagittis dignissim, mauris ipsum posuere massa, eget iaculis arcu ligula vel tortor. Aenean scelerisque accumsan tellus. Donec hendrerit eget ante tristique maximus.</p>
     </div>
 </div>
 <div class="container">    
