@@ -11,7 +11,7 @@ class DbAdapter extends PDO {
     
     private function DbAdapter() {
         parent::__construct(self::$dsn, self::$username, self::$passwd);                
-        parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);        
     }
     
     public static function getInstance() {

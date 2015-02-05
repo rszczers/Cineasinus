@@ -1,34 +1,38 @@
 <?php
 require_once '../app/models/Repertoire.php';
+require_once '../app/core/DbAdapter.php';
+
 class RepertoireDAO implements IRepertoireDAO {
     private $db;
+    
     function __construct() {
-        $this->db = new DbAdapter();
+        $this->db = \DbAdapter::getInstance(); 
     }
      
-    static public function sqlAdd($repertoire) {
+    public function sqlAdd($repertoire) {
         $sql = "insert into `repertoire` "
                 . "(`movieid`, `city`, `cinemaname`,"
                 . "`date`, `price`)"
                 . " values (" .
-                "'" . $repertoire->getMovieId() . "," .                
-                "'" . $repertoire->getCity() . "," .                
-                "'" . $repertoire->getDate() . "," .
-                "'" . $repertoire->getPrice() . ")";
+                "'" . $repertoire->getMovieId() . "'," .                
+                "'" . $repertoire->getCity() . "'," .                
+                "'" . $repertoire->getDate() . "'," .
+                "'" . $repertoire->getPrice() . "')";
         return $sql;
     }
 
-    static function sqlRead($id) {
+    function sqlRead($id) {
         $sql = "select * from `repertoire` where 'id' = " . 
             $repertoire->getId();
         return $sql;
     }
-    static public function sqlRm($repertoire) {
+    
+    public function sqlRm($repertoire) {
         $sql = "delete from `repertoire` where " .
             "'id' = " . $repertoire->getId();
         return sql;        
     }
-    static public function sqlUpdate($repertoire) {
+    public function sqlUpdate($repertoire) {
         $sql = "update `repertoire`" .
                "set movieid = '" . $repertoire->getMovieId() . "'," .
                "city = '" . $repertoire->getCity() . "'," .               
@@ -38,44 +42,69 @@ class RepertoireDAO implements IRepertoireDAO {
         return $sql;
     }
 
-    public static function add($repertoire) {
+    public function add($repertoire) {
         $sql = $this->sqlAdd($repertoire);
         $this->db->execQuery($sql);        
     }
 
-    public static function edit($movie) {
+    public function edit($movie) {
         
     }
 
-    public static function getViaCinemaName($arg) {
+    public function getViaCinemaName($arg) {
         
     }
 
-    public static function getViaCity($arg) {
+    public function getViaCity($arg) {
         
     }
 
-    public static function getViaDate($arg) {
+    public function getViaDate($arg) {
         
     }
 
-    public static function getViaId($arg) {
+    public function getViaId($arg) {
         
     }
 
-    public static function getViaMovieId($arg) {
+    public function getViaMovieId($arg) {
         
     }
 
-    public static function getViaPrice($arg) {
+    public function getViaPrice($arg) {
         
     }
 
-    public static function populate() {
+    public function populate() {
+        $sql = "SELECT * FROM `repertoire`";
+        $tmp = $this->db->execQuery($sql);
         
+        $result = array();
+        foreach($tmp as $key => $row) {                        
+            $result[] = new Repertoire($row);
+        }
+        return $result;
     }
+    
+    public function getPage($q, $i) {
+        $sql = "SELECT * FROM "
+                . "("
+                . " SELECT * FROM `repertoire` LIMIT '" . ($q * ($i+1))
+                . "')"
+                . " MINUS "
+                . "SELECT * FROM `repertoire` LIMIT '" . ($q * $i) . "';";    
+        echo $sql;
+        $tmp = $this->db->execQuery($sql);
+        
+        $result = array();
+        foreach($tmp as $key => $row) {                        
+            $result[] = new Repertoire($row);
+        }
+        return $result;
+    }
+    
 
-    public static function remove($movie) {
+    public function remove($movie) {
         
     }
 

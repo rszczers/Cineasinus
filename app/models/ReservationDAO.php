@@ -18,7 +18,7 @@ class ReservationDAO implements IReservationDAO {
                 "'" . $user->isChecked() . ")";
         return $sql;        
     }
-
+    
     function sqlRead($user) {
         $sql = "select * from `reservations` where 'id' = " . 
                $user->getId();
@@ -45,7 +45,10 @@ class ReservationDAO implements IReservationDAO {
                 . "id = " . $user->getId();        
         return $sql;
     }
-
+    
+    public function getViaMovieId($arg) {        
+    }
+    
     public function getViaCode($arg) {
                 
     }

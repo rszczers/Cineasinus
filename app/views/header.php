@@ -43,8 +43,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="http://<?php echo App::ABS_PATH; ?>repertoire/">Repertuar <span class="sr-only">(current)</span></a></li>
-                <li><a href="http://<?php echo App::ABS_PATH; ?>reservations/">Rezerwacje</a></li>
+                <li><a href="http://<?php echo App::ABS_PATH; ?>browse/repertoire/">Repertuar <span class="sr-only">(current)</span></a></li>
+                <li><a href="http://<?php echo App::ABS_PATH; ?>browse/reservations/">Rezerwacje</a></li>
                 <li><a href="http://<?php echo App::ABS_PATH; ?>browse/">Filmy</a></li>
             </ul>
             
