@@ -66,23 +66,59 @@ class ReservationDAO implements IReservationDAO {
     }
 
     public function getViaUserID($user) {
-        $pdo = new PDO(App::DSN, App::DBLOGIN, App::DBPASS);
+        $pdo = new PDO(App::DSN, App::DBLOGIN, App::DBPASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        $sql = "select * `reservations` "
-             . "where userid = :userid";
-                
+        $x = (int)($q * $i);
+        
+        $y = $q;
+        
+        $sql = "SELECT * FROM `reservations` a "
+             . "INNER JOIN `repertoire` b ON a.movieid = b.movies.id "
+             . "INNER JOIN `movies` c ON b.movieid = c.id "
+             . "WHERE userid = :userid" 
+             . "ORDER BY date LIMIT :q, :from;";
+        
         $stmt = $pdo -> prepare($sql);
         
-        $stmt -> bindValue(':userid', $user->getId(), PDO::PARAM_STR);        
-                
-        $stmt ->execute();
-                      
-        $array = $stmt->fetchAll();
-        $result = array();
-        foreach($array as $key => $row) {
-            $result[] = new Reservation($row);
+        $stmt->bindParam(':from', $y, PDO::PARAM_INT);
+        $stmt->bindParam(':q', $x, PDO::PARAM_INT);
+        $stmt->bindParam(':userid', $user->getId(), PDO::PARAM_STR);
+        
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);        
+        
+        $reservations = array();
+        $repertoire = array();
+        $movies = array();
+        
+        foreach($result as $key => $row) {            
+            $tmp = array('name' => $row['name'],
+                'category' => $row['category'],
+                'duration' => $row['duration'],
+                'diretor' => $row['director'],
+                'description'=> $row ['description'],
+                'plpremiere' => $row['plpremiere'],
+                'id' => $row['id'],
+                'fpremiere' => $row['fpremiere'],
+                'poster' => $row['poster']);
+            $movies[] = new Movie($tmp);
+            
+            $tmp = array('movieid'=>$row['movieid'],
+                'id'=>$row['id'],
+                'date'=>$row['date'],
+                'price'=>$row['price']);
+            $repertoire[] = new Repertoire($tmp);
+            
+            $tmp = array('id' => $row('id'), 'userid' => $row('userid'), 
+                'code' => $row('code'), 'repertid' => $row('repertid'), 
+                'checked' => $row('checked'));
+            $reservations[] = new Reservation($tmp);
         }
+        
+        $length = $this->db->length('reservations');
+        $result = array('repertoire' => $repertoire, 'movies' => $movies, 'reservations' => $reservations, 'length' => $length);
         return $result;                    
     }    
 
@@ -115,7 +151,7 @@ class ReservationDAO implements IReservationDAO {
         return $result;
     }
     
-    public function getPage() {
+    public function getPage($q, $i) {
         $pdo = new PDO(App::DSN, App::DBLOGIN, App::DBPASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
@@ -125,7 +161,7 @@ class ReservationDAO implements IReservationDAO {
         
         $sql = "SELECT * FROM `reservations` a "
              . "INNER JOIN `repertoire` b ON a.movieid = b.movies.id "
-             . "INNER JOIN `movies` c ON b.movieid = c.id "
+             . "INNER JOIN `movies` c ON b.movieid = c.id "             
              . "ORDER BY date LIMIT :q, :from;";
         
         $stmt = $pdo -> prepare($sql);
@@ -166,7 +202,6 @@ class ReservationDAO implements IReservationDAO {
         }
         
         $length = $this->db->length('reservations');
-        
         $result = array('repertoire' => $repertoire, 'movies' => $movies, 'reservations' => $reservations, 'length' => $length);
         return $result;
     }

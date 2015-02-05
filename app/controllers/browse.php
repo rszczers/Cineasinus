@@ -40,7 +40,7 @@ class Browse extends Controller {
     }
     
     public function reservations() {
-        if(isset($_SESSION['userdata'])) {
+        if(isset($_SESSION['userdata'])) {            
             $reservations = $this->redao->getViaUserID($_SESSION['userdata']);
             $this->view('browse/reservations', "Twoje rezerwacje", array('reservations' => $reservations));
         }
