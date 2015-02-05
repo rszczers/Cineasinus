@@ -2,7 +2,7 @@
 
 <div class="jumbotron" id="startup">
     <div class="container">
-        <h1>Lorem ipsum dolor!</h1>
+        <h1>Witaj w Cineasinus!</h1>
         <p>Nam id pretium neque. Donec nec varius augue. Phasellus vulputate eu neque a rhoncus. Pellentesque vel nunc id odio iaculis dapibus. Morbi ac imperdiet tortor. Quisque cursus, lorem sed sagittis dignissim, mauris ipsum posuere massa, eget iaculis arcu ligula vel tortor. Aenean scelerisque accumsan tellus. Donec hendrerit eget ante tristique maximus.</p>
     </div>
 </div>

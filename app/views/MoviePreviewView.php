@@ -23,8 +23,8 @@ class MoviePreviewView implements View {
             . "</h3>";
         echo "<a href=\"http://" . App::ABS_PATH
                 . "film/details/" . $this->id .  "\">"
-        . "<img style=\"max-height:250px\" src=http://" . App::ABS_PATH . $this->poster 
-            . " class=\"img-responsive previewImg\"></a>";
+        . "<img  src=http://" . App::ABS_PATH . $this->poster 
+            . " class=\"img-responsive previewImg\"></a>";        
         echo "<p>" . $this->description . 
                 " <a href=\"http://" . App::ABS_PATH
                 . "film/details/" . $this->id .  "\">(więcej)</a>" .
